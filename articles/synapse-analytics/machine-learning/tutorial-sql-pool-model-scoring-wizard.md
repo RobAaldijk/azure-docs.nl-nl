@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Wizard voor scoren van het Machine Learning-model voor SQL-pools'
-description: Zelfstudie voor het gebruik van de wizard voor scoren van het Machine Learning-model voor het verrijken van gegevens in Synapse SQL-pools
+title: 'Zelfstudie: Wizard voor scoren van het Machine learning-model voor toegewezen SQL-pools'
+description: Zelfstudie voor het gebruik van de wizard voor scoren van het Machine Learning-model voor het verrijken van gegevens in toegewezen SQL-pools.
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: machine-learning
@@ -9,29 +9,29 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 8e92ff75bb6a9757c06de3561a385cbcbb7f75ba
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: f5c5edc067b3f7b525fd129462c48ca50fdafc8f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019967"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314047"
 ---
-# <a name="tutorial-machine-learning-model-scoring-wizard-for-synapse-sql-pools"></a>Zelfstudie: De wizard voor scoren van het Machine Learning-model voor Synapse SQL-pools
+# <a name="tutorial-machine-learning-model-scoring-wizard-for-dedicated-sql-pools"></a>Zelfstudie: Wizard voor scoren van het Machine learning-model voor toegewezen SQL-pools
 
-Meer informatie over hoe u uw gegevens in SQL-pools eenvoudig kunt verrijken met voorspellende Machine Learning-modellen.  De modellen die uw gegevensanalisten maken, zijn nu eenvoudig toegankelijk voor gegevensprofessionals voor predictive analytics. Een gegevensprofessional kan in Synapse eenvoudigweg een model selecteren uit het register voor Azure Machine Learning-modellen voor implementatie in Synapse SQL-pools en voorspellingen starten om de gegevens te verrijken.
+Meer informatie over hoe u uw gegevens in toegewezen SQL-pools eenvoudig kunt verrijken met voorspellende Machine Learning-modellen.  De modellen die uw gegevensanalisten maken, zijn nu eenvoudig toegankelijk voor gegevensprofessionals voor predictive analytics. Een gegevensprofessional kan in Synapse eenvoudigweg een model selecteren uit het register voor Azure Machine Learning-modellen voor implementatie in Synapse SQL-pools en voorspellingen starten om de gegevens te verrijken.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > - Een voorspellend Machine Learning-model trainen en het model registreren in het register met Azure Machine Learning-modellen
-> - De SQL wizard voor scorengebruiken om voorspellingen te starten in Synapse SQL-pool
+> - De SQL wizard voor scoren gebruiken om voorspellingen te starten in toegewezen SQL-pool
 
 Als u geen Azure-abonnement hebt, [maakt u een gratis account voordat u begint](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Vereisten
 
 - [Synapse Analytics-werkruimte](../get-started-create-workspace.md) met een ADLS Gen2-opslagaccount dat is geconfigureerd als de standaard opslag. U moet de **Inzender van de Storage Blob-gegevens** zijn van het ADLS Gen2-bestandssysteem waar u mee werkt.
-- Synapse SQL-pool in uw Synapse Analytics-werkruimte. Raadpleeg voor meer informatie [Een Synapse SQL-pool maken](../quickstart-create-sql-pool-studio.md).
+- Toegewezen SQL-pool in uw Synapse Analytics-werkruimte. Zie [Een toegewezen SQL-pool maken](../quickstart-create-sql-pool-studio.md) voor meer informatie.
 - Azure Machine Learning-gekoppelde service in uw Synapse Analytics-werkruimte. Zie [Een Azure Machine Learning-gekoppelde service maken in Synapse](quickstart-integrate-azure-machine-learning.md) voor meer informatie.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
@@ -62,7 +62,7 @@ Voordat u alle cellen in het notebook uitvoert, controleert u of het rekenproces
 1. Het notebook traint een ONNX-model en registreert dit met MLFlow. Ga naar **Modellen** om te controleren of het nieuwe model juist is geregistreerd.
    ![Model in register](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00c.png)
 
-1. Als u het notebook uitvoert, worden de testgegevens geëxporteerd naar een CSV-bestand. Download het CSV-bestand naar uw lokale systeem. Later gaat u het CSV-bestand importeren in SQL-pool en de gegevens gebruiken om het model te testen.
+1. Als u het notebook uitvoert, worden de testgegevens geëxporteerd naar een CSV-bestand. Download het CSV-bestand naar uw lokale systeem. Later gaat u het CSV-bestand importeren in een toegewezen SQL-pool en de gegevens gebruiken om het model te testen.
 
    Het CSV-bestand wordt gemaakt in dezelfde map als het notebook-bestand. Klik op 'Vernieuwen' in de bestandenverkenner als u dit niet meteen ziet.
 
@@ -76,7 +76,7 @@ Voordat u alle cellen in het notebook uitvoert, controleert u of het rekenproces
 
    ![Gegevens uploaden](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00a.png)
 
-1. Ga naar **Ontwikkel** -> **SQL-scripts**. Maak een nieuw SQL-script om `test_data.csv` in uw SQL-pool te laden.
+1. Ga naar **Ontwikkel** -> **SQL-scripts**. Maak een nieuw SQL-script om `test_data.csv` in uw toegewezen SQL-pool te laden.
 
    > [!NOTE]
    > Werk de bestands-URL in dit script bij voordat u deze uitvoert.
@@ -117,9 +117,9 @@ Voordat u alle cellen in het notebook uitvoert, controleert u of het rekenproces
    GO
    ```
 
-   ![Laad de gegevens in SQL-pool](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00b.png)
+   ![Gegevens opladen naar een toegewezen SQL-pool](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00b.png)
 
-1. Ga naar **Gegevens** -> **Werkruimte**. Open de SQL wizard voor scoren door met de rechtermuisknop te klikken op de tabel van SQL-pool. Selecteer **Machine Learning** -> **Verrijken met bestaand model**.
+1. Ga naar **Gegevens** -> **Werkruimte**. Open de SQL wizard voor scoren door met de rechtermuisknop te klikken op de tabel van de toegewezen SQL-pool. Selecteer **Machine Learning** -> **Verrijken met bestaand model**.
 
    > [!NOTE]
    > De optie machine learning wordt alleen weergegeven als u een gekoppelde service hebt gemaakt voor Azure Machine Learning (zie **Vereisten** aan het begin van deze zelfstudie).
@@ -138,7 +138,7 @@ Voordat u alle cellen in het notebook uitvoert, controleert u of het rekenproces
 
    ![Tabel naar modeltoewijzing](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00e.png)
 
-1. De gegenereerde T-SQL-code wordt verpakt in een opgeslagen procedure. Daarom moet u een opgeslagen procedure een naam geven. Het model binair inclusief metagegevens (versie, beschrijving, enzovoort) wordt fysiek gekopieerd van Azure Machine Learning naar een tabel van SQL-pool. U moet dus opgeven in welke tabel u het model wilt opslaan. U kunt kiezen voor 'Bestaande tabel gebruiken' of 'Nieuwe tabel maken'. Als u klaar bent, klikt u op **Model implementeren + editor openen** om het model te implementeren en een T-SQL-voorspellingsscript te genereren.
+1. De gegenereerde T-SQL-code wordt verpakt in een opgeslagen procedure. Daarom moet u een opgeslagen procedure een naam geven. Het model binair inclusief metagegevens (versie, beschrijving, enzovoort) wordt fysiek gekopieerd van Azure Machine Learning naar een tabel van een toegewezen SQL-pool. U moet dus opgeven in welke tabel u het model wilt opslaan. U kunt kiezen voor 'Bestaande tabel gebruiken' of 'Nieuwe tabel maken'. Als u klaar bent, klikt u op **Model implementeren + editor openen** om het model te implementeren en een T-SQL-voorspellingsscript te genereren.
 
    ![Procedure maken](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00f.png)
 

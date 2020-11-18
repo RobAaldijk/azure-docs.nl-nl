@@ -4,12 +4,12 @@ ms.author: areddish
 ms.service: cognitive-services
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 7d876a8960bd18e990a5c964c699089b3973b4cd
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 3942d4e7316c9617e1d2f61820cfa91b42d4b883
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755581"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94625396"
 ---
 Dit artikel biedt informatie en voorbeeldcode om u op weg te helpen met de Custom Vision-clientbibliotheek voor Node.js om een afbeeldingsclassificatiemodel te maken. U maakt een project, voegt tags toe, traint het project en gebruikt de voorspellingseindpunt-URL van het project om het programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen beeldherkennings-app te maken.
 
@@ -25,7 +25,7 @@ Gebruik de Custom Vision-clientbibliotheek voor .NET voor het volgende:
 * De huidige herhaling publiceren
 * Voorspellingseindpunt testen
 
-Referentiedocumentatie [(training)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest) [(voorspelling)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest) | Bibliotheekbroncode [(training)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-training) [(voorspelling)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-prediction) | Pakket (npm) [(training)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-training) [(voorspelling)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-prediction) | [Voorbeelden](https://docs.microsoft.com/samples/browse/?products=azure&terms=custom%20vision&languages=javascript)
+Referentiedocumentatie [(training)](/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest) [(voorspelling)](/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest) | Bibliotheekbroncode [(training)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-training) [(voorspelling)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-prediction) | Pakket (npm) [(training)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-training) [(voorspelling)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-prediction) | [Voorbeelden](/samples/browse/?products=azure&terms=custom%20vision&languages=javascript)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -77,7 +77,7 @@ Maak variabelen voor het Azure-eindpunt en de Azure-sleutels voor uw resource.
 > [!IMPORTANT]
 > Ga naar Azure Portal. Als de [productnaam]-resource die u in de sectie **Vereisten** hebt gemaakt, is geïmplementeerd, klikt u op de knop **Naar de resource gaan** onder **Volgende stappen**. U vindt uw sleutel en eindpunt op de pagina **Sleutel en eindpunt** van de resource, onder **Resourcebeheer**. 
 >
-> Vergeet niet de sleutel uit uw code te verwijderen wanneer u klaar bent, en plaats deze sleutel nooit in het openbaar. Overweeg om voor productie een veilige manier te gebruiken voor het opslaan en openen van uw referenties. Zie het artikel Cognitive Services [Beveiliging](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) voor meer informatie.
+> Vergeet niet de sleutel uit uw code te verwijderen wanneer u klaar bent, en plaats deze sleutel nooit in het openbaar. Overweeg om voor productie een veilige manier te gebruiken voor het opslaan en openen van uw referenties. Zie het artikel Cognitive Services [Beveiliging](../../../cognitive-services-security.md) voor meer informatie.
 
 Voeg ook velden toe voor de projectnaam en een time-outparameter voor asynchrone aanroepen.
 
@@ -88,9 +88,9 @@ Voeg ook velden toe voor de projectnaam en een time-outparameter voor asynchrone
 
 |Naam|Beschrijving|
 |---|---|
-|[TrainingAPIClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) | Deze klasse behandelt het maken, trainen en publiceren van uw modellen. |
-|[PredictionAPIClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest)| Deze klasse verwerkt de query op uw modellen voor voorspellingen met betrekking tot de classificatie van afbeeldingen.|
-|[Voorspelling](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/prediction?view=azure-node-latest)| Deze interface definieert één voorspelling van één afbeelding. De klasse bevat eigenschappen voor de id en de naam van het object en een betrouwbaarheidsscore.|
+|[TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) | Deze klasse behandelt het maken, trainen en publiceren van uw modellen. |
+|[PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest)| Deze klasse verwerkt de query op uw modellen voor voorspellingen met betrekking tot de classificatie van afbeeldingen.|
+|[Voorspelling](/javascript/api/@azure/cognitiveservices-customvision-prediction/prediction?view=azure-node-latest)| Deze interface definieert één voorspelling van één afbeelding. De klasse bevat eigenschappen voor de id en de naam van het object en een betrouwbaarheidsscore.|
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
@@ -106,7 +106,7 @@ Deze codefragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Cus
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
-Instantieer clientobjecten met uw eindpunt en sleutel. Maak een **ApiKeyCredentials** -object met uw sleutel en gebruik het met uw eindpunt om een [TrainingAPIClient-](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) en [PredictionAPIClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest)-object te maken.
+Instantieer clientobjecten met uw eindpunt en sleutel. Maak een **ApiKeyCredentials**-object met uw sleutel en gebruik het met uw eindpunt om een [TrainingAPIClient-](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) en [PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest)-object te maken.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_auth)]
 
@@ -198,5 +198,5 @@ U hebt nu gezien hoe elke stap van het objectdetectieproces in code kan worden u
 
 * Wat is Custom Vision?
 * De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js)
-* [SDK-referentiedocumentatie (training)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest)
-* [SDK-referentiedocumentatie (voorspelling)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest)
+* [SDK-referentiedocumentatie (training)](/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest)
+* [SDK-referentiedocumentatie (voorspelling)](/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest)

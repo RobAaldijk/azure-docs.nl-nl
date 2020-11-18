@@ -17,12 +17,12 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: bc763a99c945925b80171738f4076e6305d92df9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3443cb73e85fc69349e7293597a5f4a723959d3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89229456"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130048"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Zelfstudie: Gegevens ophalen met de Azure Active Directory rapportage-API met certificaten
 
@@ -85,15 +85,17 @@ In deze zelfstudie leert u hoe u een testcertificaat kunt gebruiken om toegang t
    ``` 
 6. U kunt nu een toegangstoken verkrijgen voor de MS Graph API met behulp van dit certificaat. Gebruik de cmdlet **Get-MSCloudIdMSGraphAccessTokenFromCert** uit de MSCloudIdUtils PowerShell-module, waarbij u de toepassings-id en de vingerafdruk doorgeeft die u hebt verkregen uit de vorige stap. 
 
-   ![Azure Portal](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
+   ![Schermafbeelding van een PowerShell-venster met een opdracht die een toegangstoken aanmaakt.](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
 7. Gebruik het toegangstoken in uw PowerShell-script om query's uit te voeren op de Graph API. Gebruik de cmdlet **Invoke-MSCloudIdMSGraphQuery** van de MSCloudIDUtils om de aanmeldingen en het directoryAudits-eindpunt te inventariseren. Met deze cmdlet worden meerdere pagina's met zoekresultaten verwerkt, waarna deze resultaten naar de PowerShell-pijplijn worden verstuurd.
 
 8. Zoek het directoryAudits-eindpunt op om de auditlogboeken op te halen. 
-   ![Azure-portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
+
+   ![Schermafbeelding van een PowerShell-venster met een opdracht om een query uit te voeren op het directoryAudits-eindpunt met behulp van de toegangstoken van eerder in deze procedure.](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
 
 9. Zoek het eindpunt voor aanmeldingen op om de aanmeldingslogboeken op te halen.
-    ![Azure-portal](./media/tutorial-access-api-with-certificates/query-signins.png)
+
+    ![Schermafbeelding van een PowerShell-venster met een opdracht om een query uit te voeren op het eindpunt voor aanmeldingen met behulp van de toegangtoken van eerder in deze procedure.](./media/tutorial-access-api-with-certificates/query-signins.png)
 
 10. U kunt er nu voor kiezen om deze gegevens te exporteren naar een CSV en op te slaan in een SIEM-systeem. U kunt uw script ook verpakken in een geplande taak om periodiek gegevens van Azure AD op te halen uit uw tenant zonder dat u toepassingssleutels hoeft op te slaan in de broncode. 
 

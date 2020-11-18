@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: a62133737d48a8ebf454b5fab83ef52ef2daad09
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a9dba9222816ef2cc7891ff7f803e6a7409802a4
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098430"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593447"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Zelfstudie: Een app van één pagina maken met de Bing Afbeeldingen zoeken-API
 
@@ -122,7 +122,7 @@ Met de handler `onsubmit` wordt standaard `false` geretourneerd, waardoor het fo
 
 ![[formulier voor Bing Image Search]](media/cognitive-services-bing-images-api/image-search-spa-form.png)
 
-De Bing Afbeeldingen zoeken-API biedt verschillende [filterqueryparameters](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters) om de zoekresultaten te verfijnen en filteren. Voor het HTML-formulier in deze toepassing worden de volgende parameteropties weergegeven:
+De Bing Afbeeldingen zoeken-API biedt verschillende [filterqueryparameters](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters) om de zoekresultaten te verfijnen en filteren. Voor het HTML-formulier in deze toepassing worden de volgende parameteropties weergegeven:
 
 | Optie | Beschrijving |
 |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

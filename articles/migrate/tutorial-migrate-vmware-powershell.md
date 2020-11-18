@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 10/1/2020
 ms.author: rahugup
-ms.openlocfilehash: eed10f13b9495ab2cccfd9c57ae14ccc5d8e4a63
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 185979fcc0eeaebbe1c3b09d74050e05899737af
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043541"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376796"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>VMware-VM's migreren naar Azure (zonder agent) - PowerShell
 
@@ -87,6 +87,9 @@ Azure Migrate maakt gebruik van een lichtgewicht [Azure Migrate-apparaat](migrat
 
 Als u een specifieke VMware-VM in een Azure Migrate project wilt ophalen, geeft u de naam van het Azure Migrate-project (`ProjectName`), de resourcegroep van het Azure Migrate-project (`ResourceGroupName`) en de naam van de VM (`DisplayName`) op. 
 
+> [!NOTE]
+> **De parameterwaarde van de VM-naam (`DisplayName`) is hoofdlettergevoelig**.
+
 ```azurepowershell
 # Get a specific VMware VM in an Azure Migrate project
 $DiscoveredServer = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.Name -ResourceGroupName $ResourceGroup.ResourceGroupName -DisplayName "MyTestVM"
@@ -146,7 +149,7 @@ U kunt de replicatie-eigenschappen als volgt opgeven.
 - **Virtueel netwerk en subnet van doel**: geef de id van het Azure Virtual Network en de naam van het subnet waarnaar de VM moet worden gemigreerd respectievelijk op met de parameters `TargetNetworkId` en `TargetSubnetName`. 
 - **Naam van de doel-VM**: geef de naam van de Azure-VM die u wilt maken op met behulp van de parameter `TargetVMName`.
 - **Grootte van de doel-VM**: geef de grootte van de Azure-VM op die moet worden gebruikt voor de replicatie van de virtuele machine met behulp van de parameter `TargetVMSize`. Als u bijvoorbeeld een VM wilt migreren naar een D2_v2-VM in Azure, geeft u Standard_D2_v2 op als waarde voor `TargetVMSize`.  
-- **Licentie**: als u Azure Hybrid Benefit wilt gebruiken voor uw Windows Server-computers die zijn gedekt met actieve Software Assurance of Windows Server-abonnementen, geeft u AHUB op als waarde voor de parameter `LicenseType`. Als dat niet het geval is, geeft u NoLicenseType op als waarde voor de parameter `LicenseType`.
+- **Licentie**: als u Azure Hybrid Benefit wilt gebruiken voor uw Windows Server-computers die zijn gedekt met actieve Software Assurance of Windows Server-abonnementen, geeft u WindowsServer op als waarde voor de parameter `LicenseType`. Als dat niet het geval is, geeft u NoLicenseType op als waarde voor de parameter `LicenseType`.
 - **Besturingssysteemschijf**: geef de unieke id op van de schijf die de bootloader en het installatieprogramma van het besturingssysteem bevat. De schijf-id die moet worden gebruikt, is de unieke id (UUID) voor de schijf die wordt opgehaald met behulp van de cmdlet `Get-AzMigrateServer`.
 - **Schijftype**: geef de waarde voor de parameter `DiskType` als volgt op.
     - Als u Premium beheerde schijven wilt gebruiken, geeft u Premium_LRS op als waarde voor de parameter `DiskType`. 
@@ -156,7 +159,8 @@ U kunt de replicatie-eigenschappen als volgt opgeven.
     - Beschikbaarheidszone, om de gemigreerde computer vast te maken aan een specifieke beschikbaarheidszone in de regio. Gebruik deze optie om servers te distribueren die een toepassingslaag met meerdere knooppunten in de beschikbaarheidszones vormen. Deze optie is alleen beschikbaar als de doelregio die voor de migratie is geselecteerd, ondersteuning biedt voor beschikbaarheidszones. Als u beschikbaarheidszones wilt gebruiken, geeft u de beschikbaarheidszone op als waarde voor de parameter `TargetAvailabilityZone`.
     - Beschikbaarheidsset, om de gemigreerde machine in een beschikbaarheidsset te plaatsen. De doelresourcegroep die is geselecteerd, moet een of meer beschikbaarheidssets bevatten om deze optie te kunnen gebruiken. Als u een beschikbaarheidsset wilt gebruiken, geeft u de beschikbaarheidsset-id op voor de parameter `TargetAvailabilitySet`. 
 
-In deze zelfstudie repliceert u alle schijven van de gedetecteerde virtuele machine en geeft u een nieuwe naam op voor de virtuele machine in Azure. We geven de eerste schijf van de gedetecteerde server op als besturingssysteemschijf en migreren alle schijven als Standard - HDD-schijven. De besturingssysteemschijf is de schijf die de bootloader en het installatieprogramma van het besturingssysteem bevat.
+### <a name="replicate-vms-with-all-disks"></a>VM's repliceren met alle schijven
+In deze zelfstudie repliceert u alle schijven van de gedetecteerde virtuele machine en geeft u een nieuwe naam op voor de virtuele machine in Azure. We geven de eerste schijf van de gedetecteerde server op als besturingssysteemschijf en migreren alle schijven als Standard - HDD-schijven. De besturingssysteemschijf is de schijf die de bootloader en het installatieprogramma van het besturingssysteem bevat. De cmdlet retourneert een taak die opgevolgd kan worden om de status van de bewerking te controleren. 
 
 ```azurepowershell
 # Retrieve the resource group that you want to migrate to
@@ -178,6 +182,7 @@ while (($MigrateJob.State -eq "InProgress") -or ($MigrateJob.State -eq "NotStart
 Write-Output $MigrateJob.State
 ```
 
+### <a name="replicate-vms-with-select-disks"></a>VM's repliceren met specifieke schijven
 U kunt de schijven van de gedetecteerde VM ook selectief repliceren met behulp van de cmdlet `New-AzMigrateDiskMapping` en dat als invoer opgeven voor de parameter `DiskToInclude` in de cmdlet `New-AzMigrateServerReplication`. U kunt de cmdlet `New-AzMigrateDiskMapping` ook gebruiken om verschillende doelschijftypen op te geven voor elke afzonderlijke schijf die moet worden gerepliceerd. 
 
 Geef waarden op voor de volgende parameters van de cmdlet `New-AzMigrateDiskMapping`.
@@ -186,7 +191,7 @@ Geef waarden op voor de volgende parameters van de cmdlet `New-AzMigrateDiskMapp
 - **IsOSDisk**: geef true (waar) op als de schijf die moet worden gemigreerd, de besturingssysteemschijf van de virtuele machine is, anders false (niet waar).
 - **DiskType**: geef het type schijf op dat moet worden gebruikt in Azure. 
 
-In het volgende voorbeeld repliceren we slechts twee schijven van de gedetecteerde VM. We geven de besturingssysteemschijf op en gebruiken verschillende schijftypen voor elke schijf die moet worden gerepliceerd.
+In het volgende voorbeeld repliceren we slechts twee schijven van de gedetecteerde VM. We geven de besturingssysteemschijf op en gebruiken verschillende schijftypen voor elke schijf die moet worden gerepliceerd. De cmdlet retourneert een taak die opgevolgd kan worden om de status van de bewerking te controleren. 
 
 ```azurepowershell
 # View disk details of the discovered server
@@ -308,9 +313,18 @@ Replicatie vindt als volgt plaats:
 - Tijdens de eerste replicatie wordt een VM-momentopname gemaakt. Schijfgegevens uit de momentopname worden gerepliceerd naar beheerde replicaschijven in Azure.
 - Nadat de initiële replicatie is voltooid, begint de deltareplicatie. Incrementele wijzigingen van on-premises schijven worden periodiek gerepliceerd naar de replicaschijven in Azure.
 
+## <a name="retrieve-the-status-of-a-job"></a>De status van een taak ophalen
+
+U kunt de status van een taak bewaken met behulp van de cmdlet `Get-AzMigrateJob`. 
+
+```azurepowershell
+# Retrieve the updated status for a job
+$job = Get-AzMigrateJob -InputObject $job
+```
+
 ## <a name="update-properties-of-a-replicating-vm"></a>Eigenschappen van een replicatie-VM bijwerken
 
-Met [Azure Migrate-servermigratie](migrate-services-overview.md#azure-migrate-server-migration-tool) kunt u doeleigenschappen voor een replicatie-VM wijzigen, zoals de naam, grootte, resourcegroep, NIC-configuratie, enzovoort. 
+Met [Azure Migrate-servermigratie](migrate-services-overview.md#azure-migrate-server-migration-tool) kunt u doeleigenschappen voor een replicatie-VM wijzigen, zoals de naam, grootte, resourcegroep, NIC-configuratie, enzovoort. De cmdlet retourneert een taak die opgevolgd kan worden om de status van de bewerking te controleren. 
 
 ```azurepowershell
 # Retrieve the replicating VM details by using the discovered VM identifier
@@ -348,6 +362,15 @@ $NicMapping += $NicMapping2
 
 # Update the name, size and NIC configuration of a replicating server
 $UpdateJob = Set-AzMigrateServerReplication -InputObject $ReplicatingServer -TargetVMSize "Standard_DS13_v2" -TargetVMName "MyMigratedVM" -NicToUpdate $NicMapping
+
+# Track job status to check for completion
+while (($UpdateJob.State -eq "InProgress") -or ($UpdateJob.State -eq "NotStarted")){
+        #If the job hasn't completed, sleep for 10 seconds before checking the job status again
+        sleep 10;
+        $UpdateJob = Get-AzMigrateJob -InputObject $UpdateJob
+}
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+Write-Output $UpdateJob.State
 ```
 
 U kunt ook alle replicatieservers in een Azure Migrate-project weergeven en vervolgens de replicatie-id van de VM gebruiken om de VM-eigenschappen bij te werken.
@@ -363,7 +386,7 @@ $ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $Replicating
 
 ## <a name="run-a-test-migration"></a>Een testmigratie uitvoeren
 
-Wanneer de replicatie van verschillen begint, kunt u een testmigratie voor de virtuele machines uitvoeren voordat u een volledige migratie naar Azure uitvoert. We raden u ten zeerste aan om ten minste één keer een testmigratie uit te voeren voor elke machine voordat u deze migreert.
+Wanneer de replicatie van verschillen begint, kunt u een testmigratie voor de virtuele machines uitvoeren voordat u een volledige migratie naar Azure uitvoert. We raden u ten zeerste aan om ten minste één keer een testmigratie uit te voeren voor elke machine voordat u deze migreert. De cmdlet retourneert een taak die opgevolgd kan worden om de status van de bewerking te controleren. 
 
 - Bij het uitvoeren van een testmigratie wordt gecontroleerd of de migratie werkt zoals verwacht. De testmigratie heeft geen invloed op de on-premises computer, die operationeel blijft en doorgaat met repliceren. 
 - Met een testmigratie wordt de migratie gesimuleerd door een Azure-VM te maken met behulp van gerepliceerde gegevens (die meestal worden gemigreerd naar een niet-productie-VNet in uw Azure-abonnement).
@@ -377,32 +400,69 @@ $TestVirtualNetwork = Get-AzVirtualNetwork -Name MyTestVirtualNetwork
 
 # Start test migration for a replicating server
 $TestMigrationJob = Start-AzMigrateTestMigration -InputObject $ReplicatingServer -TestNetworkID $TestVirtualNetwork.Id
+
+# Track job status to check for completion
+while (($TestMigrationJob.State -eq "InProgress") -or ($TestMigrationJob.State -eq "NotStarted")){
+        #If the job hasn't completed, sleep for 10 seconds before checking the job status again
+        sleep 10;
+        $TestMigrationJob = Get-AzMigrateJob -InputObject $TestMigrationJob
+}
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+Write-Output $TestMigrationJob.State
 ```
 
-Nadat het testen is voltooid, kunt u de testmigratie opschonen met de cmdlet `Start-AzMigrateTestMigrationCleanup`.
+Nadat het testen is voltooid, kunt u de testmigratie opschonen met de cmdlet `Start-AzMigrateTestMigrationCleanup`. De cmdlet retourneert een taak die opgevolgd kan worden om de status van de bewerking te controleren. 
 
 ```azurepowershell
 # Clean-up test migration for a replicating server
 $CleanupTestMigrationJob = Start-AzMigrateTestMigrationCleanup -InputObject $ReplicatingServer
+
+# Track job status to check for completion
+while (($CleanupTestMigrationJob.State -eq "InProgress") -or ($CleanupTestMigrationJob.State -eq "NotStarted")){
+        #If the job hasn't completed, sleep for 10 seconds before checking the job status again
+        sleep 10;
+        $CleanupTestMigrationJob = Get-AzMigrateJob -InputObject $CleanupTestMigrationJob
+}
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+Write-Output $CleanupTestMigrationJob.State
 ```
 
 ## <a name="migrate-vms"></a>Virtuele machines migreren
 
-Nadat u hebt geverifieerd dat de testmigratie naar verwachting werkt, kunt u de replicatieserver migreren met de volgende cmdlet.
+Nadat u hebt geverifieerd dat de testmigratie naar verwachting werkt, kunt u de replicatieserver migreren met de volgende cmdlet. De cmdlet retourneert een taak die opgevolgd kan worden om de status van de bewerking te controleren. 
+
+Als u de bronserver niet wilt uitschakelen, gebruikt u de parameter `TurnOffSourceServer` niet.
 
 ```azurepowershell
 # Start migration for a replicating server and turn off source server as part of migration
 $MigrateJob = Start-AzMigrateServerMigration -InputObject $ReplicatingServer -TurnOffSourceServer 
+
+# Track job status to check for completion
+while (($MigrateJob.State -eq "InProgress") -or ($MigrateJob.State -eq "NotStarted")){
+        #If the job hasn't completed, sleep for 10 seconds before checking the job status again
+        sleep 10;
+        $MigrateJob = Get-AzMigrateJob -InputObject $MigrateJob
+}
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+Write-Output $MigrateJob.State
 ```
-Als u de bronserver niet wilt uitschakelen, gebruikt u de parameter `TurnOffSourceServer` niet.
 
 ## <a name="complete-the-migration"></a>Migratie voltooien
 
-1. Nadat de migratie is voltooid, kunt u de replicatie voor de on-premises computer stoppen en de replicatiestatusgegevens voor de VM opschonen met de volgende cmdlet.
+1. Nadat de migratie is voltooid, kunt u de replicatie voor de on-premises computer stoppen en de replicatiestatusgegevens voor de VM opschonen met de volgende cmdlet. De cmdlet retourneert een taak die opgevolgd kan worden om de status van de bewerking te controleren. 
 
 ```azurepowershell
 # Stop replication for a migrated server
 $StopReplicationJob = Remove-AzMigrateServerReplication -InputObject $ReplicatingServer 
+
+# Track job status to check for completion
+while (($StopReplicationJob.State -eq "InProgress") -or ($StopReplicationJob.State -eq "NotStarted")){
+        #If the job hasn't completed, sleep for 10 seconds before checking the job status again
+        sleep 10;
+        $StopReplicationJob = Get-AzMigrateJob -InputObject $StopReplicationJob
+}
+#Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
+Write-Output $StopReplicationJob.State
 ```
 
 2. Installeer de Azure VM [Windows](../virtual-machines/extensions/agent-windows.md)- of [Linux](../virtual-machines/extensions/agent-linux.md)-agent op de gemigreerde computers.

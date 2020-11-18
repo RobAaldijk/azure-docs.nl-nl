@@ -12,12 +12,12 @@ ms.date: 10/21/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 49bba8054065123d7409f26b61d1dfc2580ef720
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e56748df2fb69ace4e9b8d9f6908bc8013176a19
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636048"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287804"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Codevoorbeelden voor Microsoft identity platform (v2.0-eindpunt)
 
@@ -55,23 +55,25 @@ De volgende voorbeelden illustreren webtoepassingen waarmee gebruikers worden aa
 
 | Platform | Meldt alleen gebruikers aan | Meldt gebruikers aan en roept Microsoft Graph aan |
 | -------- | ------------------- | --------------------------------- |
-| ![In deze afbeelding ziet u het ASP.NET Core-logo](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [Zelfstudie voor gebruikersaanmelding met ASP.NET Core-web-app](https://aka.ms/aspnetcore-webapp-sign-in) | Hetzelfde voorbeeld in de fase [ASP.NET Core web-app roept Microsoft Graph aan](https://aka.ms/aspnetcore-webapp-call-msgraph) |
-| ![In deze afbeelding ziet u het ASP.NET-logo](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET-quickstart](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
+| ![In deze afbeelding ziet u het ASP.NET Core-logo](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [Zelfstudie voor gebruikersaanmelding met ASP.NET Core-web-app](https://aka.ms/aspnetcore-webapp-sign-in) | Hetzelfde voorbeeld in de fase [ASP.NET Core web-app roept Microsoft Graph aan](https://aka.ms/aspnetcore-webapp-call-msgraph)</p>Geavanceerd voorbeeld [Toegang tot de tokencache van de aangemelde gebruiker voor achtergrond-apps, API's en services](https://github.com/Azure-Samples/ms-identity-dotnet-advanced-token-cache) |
+| ![In deze afbeelding ziet u het ASP.NET Framework-logo](media/sample-v2-code/logo_NETframework.png)</p>ASP.NET Core | [Migratiedraaiboek voor AD FS naar Azure AD voor ontwikkelaars](https://github.com/Azure-Samples/ms-identity-dotnet-adfs-to-aad) om te leren hoe u veilig uw toepassingen die geïntegreerd zijn in Active Directory Federation Services (AD FS) migreert naar Azure Active Directory (Azure AD) | |
+| ![In deze afbeelding ziet u het ASP.NET Framework-logo](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET-quickstart](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 | ![In deze afbeelding ziet u het Java-logo](media/sample-v2-code/logo_java.png)  |                   | [ms-identity-java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
 | ![In deze afbeelding ziet u het Python-logo](media/sample-v2-code/logo_python.png)  | [ms-identity-python-flask-webapp-authentication](https://github.com/Azure-Samples/ms-identity-python-flask-webapp-authentication) | [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp) |
 | ![In deze afbeelding ziet u het Ruby-logo](media/sample-v2-code/logo_ruby.png) |                   | [msgraph-training-rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp) |
 
 ## <a name="desktop-and-mobile-public-client-apps"></a>Openbare client-apps voor bureaublad en mobiel
 
-De volgende voorbeelden tonen openbare clienttoepassingen (bureaublad- of mobiele toepassingen) die de Microsoft Graph-API aanroepen, of uw eigen web-API namens een gebruiker. Met uitzondering van het voorbeeld *Bureaublad (console) met WAM* , maken al deze clienttoepassingen gebruik van Microsoft Authentication Library (MSAL).
+De volgende voorbeelden tonen openbare clienttoepassingen (bureaublad- of mobiele toepassingen) die de Microsoft Graph-API aanroepen, of uw eigen web-API namens een gebruiker. Met uitzondering van het voorbeeld *Bureaublad (console) met WAM*, maken al deze clienttoepassingen gebruik van Microsoft Authentication Library (MSAL).
 
 | Clienttoepassing | Platform | Stroom/toekenning | Roept Microsoft Graph aan | Roept een ASP.NET Core-web-API aan |
 | ------------------ | -------- |  ----------| ---------- | ------------------------- |
-| Bureaublad (WPF)      | ![In deze afbeelding ziet u het .NET/C#-logo](media/sample-v2-code/logo_NET.png) | [Autorisatiecode](msal-authentication-flows.md#authorization-code)| [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi) |
-| Bureaublad (console)   | ![In deze afbeelding ziet u het .NET/C#-logo (Desktop)](media/sample-v2-code/logo_NET.png) | [Geïntegreerde Windows-verificatie](msal-authentication-flows.md#integrated-windows-authentication) | [dotnet-iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2) |  |
+| Zelfstudie voor desktop (.NET Core) - indien gewenst met:</p>- de platformoverschrijdende tokencache</p>- aangepaste webgebruikersinterface | ![In deze afbeelding ziet u het .NET/C#-logo](media/sample-v2-code/logo_NETcore.png) | [Autorisatiecode](msal-authentication-flows.md#authorization-code)| [ms-identity-dotnet-desktop-tutorial](https://github.com/azure-samples/ms-identity-dotnet-desktop-tutorial) | |
+| Bureaublad (WPF)      | ![In deze afbeelding ziet u het logo van .NET/C#-logo](media/sample-v2-code/logo_NET.png) | [Autorisatiecode](msal-authentication-flows.md#authorization-code)| [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi) |
+| Bureaublad (console)   | ![Afbeelding met het logo van .NET/C# (Desktop)](media/sample-v2-code/logo_NET.png) | [Geïntegreerde Windows-verificatie](msal-authentication-flows.md#integrated-windows-authentication) | [dotnet-iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2) |  |
 | Bureaublad (console)   | ![In deze afbeelding ziet u het Java-logo](media/sample-v2-code/logo_java.png) | [Geïntegreerde Windows-verificatie](msal-authentication-flows.md#integrated-windows-authentication) |[ms-identity-java-desktop](https://github.com/Azure-Samples/ms-identity-java-desktop/) |  |
-| Bureaublad (console)   | ![In deze afbeelding ziet u het .NET/C#-logo (bureaublad)](media/sample-v2-code/logo_NETcore.png) | [Gebruikersnaam en wachtwoord](msal-authentication-flows.md#usernamepassword) |[dotnetcore-up-v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) |  |
-| Bureaublad (console) met WAM  | ![In deze afbeelding ziet u het .NET/C#-logo (bureaublad)](media/sample-v2-code/logo_NETcore.png) | Interactief met [Web Account Manager](/windows/uwp/security/web-account-manager) (WAM) |[dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) |  |
+| Bureaublad (console)   | ![Dit is het logo van .NET/C# (Desktop)](media/sample-v2-code/logo_NETcore.png) | [Gebruikersnaam en wachtwoord](msal-authentication-flows.md#usernamepassword) |[dotnetcore-up-v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) |  |
+| Bureaublad (console) met WAM  | ![Dit is het logo voor .NET/C# (Desktop)](media/sample-v2-code/logo_NETcore.png) | Interactief met [Web Account Manager](/windows/uwp/security/web-account-manager) (WAM) |[dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) |  |
 | Bureaublad (console)   | ![In deze afbeelding ziet u het Java-logo](media/sample-v2-code/logo_java.png) | [Gebruikersnaam en wachtwoord](msal-authentication-flows.md#usernamepassword) |[ms-identity-java-desktop](https://github.com/Azure-Samples/ms-identity-java-desktop/) |  |
 | Bureaublad (console)   | ![In deze afbeelding ziet u het Python-logo](media/sample-v2-code/logo_python.png) | [Gebruikersnaam en wachtwoord](msal-authentication-flows.md#usernamepassword) |[ms-identity-python-desktop](https://github.com/Azure-Samples/ms-identity-python-desktop) |  |
 | Mobiel (Android, iOS, UWP)   | ![In deze afbeelding ziet u het .NET/C#-logo (Xamarin)](media/sample-v2-code/logo_xamarin.png) | [Autorisatiecode](msal-authentication-flows.md#authorization-code) |[xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) |  |
@@ -87,7 +89,7 @@ In de volgende voorbeelden ziet u een toepassing die de Microsoft Graph-API aanr
 | Clienttoepassing | Platform | Stroom/Toekenning | Roept Microsoft Graph aan |
 | ------------------ | -------- | ---------- | -------------------- |
 | Console | ![In deze afbeelding ziet u het .NET Core-logo](media/sample-v2-code/logo_NETcore.png)</p> ASP.NET  | [Clientreferenties](msal-authentication-flows.md#client-credentials) | [dotnetcore-daemon-v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2) |
-| Web-app | ![In deze afbeelding ziet u het ASP.NET-logo](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET  | [Clientreferenties](msal-authentication-flows.md#client-credentials) | [dotnet-daemon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2) |
+| Web-app | ![Schermopname van het logo van ASP.NET.](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET  | [Clientreferenties](msal-authentication-flows.md#client-credentials) | [dotnet-daemon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2) |
 | Console | ![In deze afbeelding ziet u het Java-logo](media/sample-v2-code/logo_java.png) | [Clientreferenties](msal-authentication-flows.md#client-credentials) | [ms-identity-java-daemon](https://github.com/Azure-Samples/ms-identity-java-daemon) |
 | Console | ![In deze afbeelding ziet u het Python-logo](media/sample-v2-code/logo_python.png) | [Clientreferenties](msal-authentication-flows.md#client-credentials) | [ms-identity-python-daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) |
 
@@ -103,7 +105,7 @@ In het volgende voorbeeld ziet u een openbare clienttoepassing die wordt uitgevo
 
 ## <a name="multi-tenant-saas-applications"></a>SaaS-toepassingen voor meerdere tenants
 
-De volgende voorbeelden laten zien hoe u uw toepassing kunt configureren om aanmeldingen te accepteren van een Azure Active Directory-tenant (Azure AD). Als u uw toepassing wilt configureren voor *meerdere tenants* , kunt u een SaaS-toepassing ( **Software as a Service** ) aan een groot aantal organisaties aanbieden, zodat gebruikers zich kunnen aanmelden bij uw toepassing als zij toestemming hebben gegeven om hun account te gebruiken.
+De volgende voorbeelden laten zien hoe u uw toepassing kunt configureren om aanmeldingen te accepteren van een Azure Active Directory-tenant (Azure AD). Als u uw toepassing wilt configureren voor *meerdere tenants*, kunt u een SaaS-toepassing (**Software as a Service**) aan een groot aantal organisaties aanbieden, zodat gebruikers zich kunnen aanmelden bij uw toepassing als zij toestemming hebben gegeven om hun account te gebruiken.
 
 | Platform | Beschrijving | Koppeling |
 | -------- | --------------------- | -------- |
@@ -141,4 +143,4 @@ Zie de [voorbeelden en zelfstudies van de Microsoft Graph-community](https://git
 
 ## <a name="see-also"></a>Zie ook
 
-[Conceptuele en naslaginformatie over de Microsoft Graph API](/graph/use-the-api?context=graph%2fapi%2fbeta&view=graph-rest-beta)
+[Conceptuele en naslaginformatie over de Microsoft Graph API](/graph/use-the-api?context=graph%2fapi%2fbeta&view=graph-rest-beta&preserve-view=true)

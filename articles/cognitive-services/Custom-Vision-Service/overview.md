@@ -12,18 +12,18 @@ ms.date: 09/14/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: afbeeldingsherkenning, afbeeldings-id, app voor afbeeldingsherkenning, Custom Vision
-ms.openlocfilehash: 47227a60b1ed45499afdb42fbc062abc5ae51ff9
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: aa338bf708abaa49d65b6a817009224973f3fb29
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605402"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616906"
 ---
 # <a name="what-is-custom-vision"></a>Wat is Custom Vision?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure Custom Vision is een service voor het herkennen van afbeeldingen waarmee u uw eigen afbeeldings-id’s kunt bouwen, implementeren en verbeteren. Met een afbeeldings-id worden labels (die klassen of objecten vertegenwoordigen) toegepast op afbeeldingen, op basis van de bijbehorende visuele kenmerken. Anders dan bij de [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)-service kunt u met Custom Vision de labels opgeven en aangepaste modellen trainen om deze te detecteren.
+Azure Custom Vision is een service voor het herkennen van afbeeldingen waarmee u uw eigen afbeeldings-id’s kunt bouwen, implementeren en verbeteren. Met een afbeeldings-id worden labels (die klassen of objecten vertegenwoordigen) toegepast op afbeeldingen, op basis van de bijbehorende visuele kenmerken. Anders dan bij de [Computer Vision](../computer-vision/overview.md)-service kunt u met Custom Vision de labels opgeven en aangepaste modellen trainen om deze te detecteren.
 
 ## <a name="what-it-does"></a>Wat het doet
 
