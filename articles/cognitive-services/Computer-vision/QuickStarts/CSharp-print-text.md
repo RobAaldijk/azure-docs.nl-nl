@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-dotnet
-ms.openlocfilehash: 52241972e283db1c5e000e1e9f5d655dfdd9c8a3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ce75b5465d18f988d9dfd2b329c4157bab41ded9
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88928187"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534514"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-20-rest-api-ocr-operation-and-c"></a>Quickstart: Tekst extraheren met de OCR-bewerking uit de Computer Vision 2.0-REST API en C#
 
 > [!IMPORTANT]
 > Als u tekst extraheert in het Engels, Nederlands, Frans, Duits, Italiaans, Portugees, Spaans of vereenvoudigd Chinees (preview), wordt aangeraden om de nieuwere [Leesbewerking](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) te gebruiken. Er is een [quickstart voor C#](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text) beschikbaar. 
 
-In deze snelstart extraheert u gedrukte tekst uit een afbeelding met behulp van de functie [OCR-bewerking](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) in de Computer Vision-REST API. Met deze bewerking kunt u tekst in een afbeelding detecteren en de herkende tekens naar een machinaal leesbare tekenstroom extraheren.
+In deze snelstart extraheert u gedrukte tekst uit een afbeelding met behulp van de functie [OCR-bewerking](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) in de Computer Vision-REST API. Met deze bewerking kunt u tekst in een afbeelding detecteren en de herkende tekens naar een machinaal leesbare tekenstroom extraheren.
 
 ## <a name="prerequisites"></a>Vereisten
 

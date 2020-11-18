@@ -9,12 +9,12 @@ ms.date: 10/29/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 7b44abbbf2e7592205d5d5c291ce99d381a283f7
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: de93d96085269c2cc8fcf6c18d7e6643facfcaa4
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043279"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372707"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-the-latest-apis"></a>Programmatisch Azure-abonnementen maken met de nieuwste API's
 
@@ -736,7 +736,7 @@ GET https://management.azure.com/providers/Microsoft.Subscription/aliases/sample
 
 Een 'in voortgang'-status wordt geretourneerd als een `Accepted`-status onder `provisioningState`. 
 
-Geef de optionele *resellerId* , die in de tweede stap is gekopieerd, door in de aanvraagbody van de API.
+Geef de optionele *resellerId*, die in de tweede stap is gekopieerd, door in de aanvraagbody van de API.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-MPA)
 
@@ -798,7 +798,15 @@ U kunt abonnementen maken op uw Azure Resource Manager-sjabloon (ARM-sjabloon), 
 
 ### <a name="prerequisites"></a>Vereisten
 
-U moet de rol van eigenaar, bijdrager of Azure-abonnementsmaker op een factuursectie of die van eigenaar of bijdrager op een factureringsprofiel of factureringsrekening hebben om abonnementen te maken. Voor meer informatie, zie [Rollen en taken voor abonnementsfacturering](understand-mca-roles.md#subscription-billing-roles-and-tasks).
+Als u abonnementen wilt maken, moet u een van de onderstaande rollen hebben: 
+
+- Eigenaar van het Azure-abonnement op een factuursectie
+- Inzender van het Azure-abonnement op een factuursectie
+- Maker van het Azure-abonnement op een factuursectie
+- Eigenaar van het Azure-abonnement voor een factureringsprofiel of een factureringsaccount
+- Inzender van het Azure-abonnement voor een factureringsprofiel of een factureringsaccount
+
+ Voor meer informatie, zie [Rollen en taken voor abonnementsfacturering](understand-mca-roles.md#subscription-billing-roles-and-tasks).
 
 Daarnaast moet u, omdat u een implementatie met een ARM-sjabloon uitvoert, schrijfmachtigingen hebben voor het hoofdobject. Dus als u de ARM-implementatie onder een beheergroep maakt, moet u schrijfmachtigingen hebben voor de beheergroep. De actie is uitsluitend bedoeld om een ARM-implementatie te maken. Als er een abonnement wordt gemaakt, wordt het alleen gemaakt in de beheergroep die in de ARM-sjabloon wordt opgegeven.
 

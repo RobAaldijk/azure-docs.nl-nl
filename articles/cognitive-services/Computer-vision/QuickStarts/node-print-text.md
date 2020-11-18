@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: 64ca75645d1a9e6d638af5128a6c690c47985cdd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 844252d5ae86ccdd853c4c65889f7233f69215ff
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974529"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535976"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-nodejs"></a>Quickstart: Gedrukte tekst extraheren (Optical Character Recognition of OCR) met behulp van de Computer Vision REST API en Node.js
 
 > [!NOTE]
 > Als u Engelstalige tekst extraheert, overweeg dan de nieuwe [leesbewerking](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) te gebruiken.
 
-In deze quickstart gebruikt u optische tekenherkenning (OCR) om tekst uit een afbeelding te extraheren met behulp van de Computer Vision REST API. Met de [OCR-methode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) kunt u tekst in een afbeelding detecteren en de herkende tekens naar een machinaal leesbare tekenstroom extraheren.
+In deze quickstart gebruikt u optische tekenherkenning (OCR) om tekst uit een afbeelding te extraheren met behulp van de Computer Vision REST API. Met de [OCR-methode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) kunt u tekst in een afbeelding detecteren en de herkende tekens naar een machinaal leesbare tekenstroom extraheren.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -217,4 +217,4 @@ Verwijder het bestand wanneer u het niet meer nodig hebt en verwijder vervolgens
 Bekijk vervolgens de Computer Vision-API's die worden gebruikt om een afbeelding te analyseren, beroemdheden en interessante plekken te detecteren, een miniatuur te maken en gedrukte en handgeschreven tekst te extraheren.
 
 > [!div class="nextstepaction"]
-> [De Computer Vision-API verkennen](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [De Computer Vision-API verkennen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d)

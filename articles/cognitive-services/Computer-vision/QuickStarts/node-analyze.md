@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18, seo-javascript-september2018, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: 53c358c3a74af7a4be51b3f44b9d942fdc167eed
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 77cf1635f035a4bb256a03d9f11aa0a408bd2fe4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972761"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538985"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-nodejs"></a>Quickstart: Een externe afbeelding analyseren met behulp van de Computer Vision REST API met Node.js
 
-In deze quickstart analyseert u een extern opgeslagen afbeelding om visuele kenmerken te extraheren met behulp van de Computer Vision REST API met Node.js. Met de [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)-methode kunt u visuele kenmerken verkrijgen op basis van de afbeeldingsinhoud.
+In deze quickstart analyseert u een extern opgeslagen afbeelding om visuele kenmerken te extraheren met behulp van de Computer Vision REST API met Node.js. Met de [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b)-methode kunt u visuele kenmerken verkrijgen op basis van de afbeeldingsinhoud.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -183,4 +183,4 @@ Verwijder het bestand wanneer u het niet meer nodig hebt en verwijder vervolgens
 Bekijk vervolgens de Computer Vision-API's die worden gebruikt om een afbeelding te analyseren, beroemdheden en interessante plekken te detecteren, een miniatuur te maken en gedrukte en handgeschreven tekst te verkrijgen.
 
 > [!div class="nextstepaction"]
-> [De Computer Vision-API verkennen](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [De Computer Vision-API verkennen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d)
