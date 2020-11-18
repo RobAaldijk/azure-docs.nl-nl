@@ -7,18 +7,21 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
-ms.openlocfilehash: 70ea5ec9ee91fdba8023b9c6af1ce65b691a17fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 291586bc2e34784a7bbf29016ea1da35d51e844b
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006887"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489944"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Zelfstudie: Azure Functions uitvoeren vanuit Azure Stream Analytics-taken 
 
 U kunt Azure Functions uitvoeren vanuit Azure Stream Analytics door Azure Functions te configureren als een van de uitvoerlocaties naar de Stream Analytics-taak. Azure Functions is een gebeurtenisafhankelijke, compute-on-demand-ervaring waarmee u code kunt implementeren die wordt geactiveerd door gebeurtenissen in Azure of services van derden. Door deze mogelijkheid van Azure Functions om op triggers te reageren, is het een natuurlijke uitvoer naar Stream Analytics-taken.
 
 Stream Analytics activeert Azure Functions via HTTP-triggers. De uitvoeradapter van Azure Functions biedt gebruikers de mogelijkheid om Azure Functions te verbinden met Stream Analytics. Gebeurtenissen kunnen dan worden geactiveerd op basis van Stream Analytics-query's. 
+
+> [!NOTE]
+> Verbinding met Azure Functions binnen een virtueel netwerk (VNet) vanuit een Stream Analytics-taak die wordt uitgevoerd in een multitenantcluster, wordt niet ondersteund.
 
 In deze zelfstudie leert u het volgende:
 
@@ -130,11 +133,11 @@ Volg de zelfstudie [Realtime fraudedetectie](stream-analytics-real-time-fraud-de
  
 4. Ga terug naar Azure Portal. Blader op het tabblad **Platformfuncties** naar uw functie. Selecteer onder **Ontwikkelingsprogramma's** de optie **App Service-editor**. 
  
-   ![Schermopname van App Service-editor](./media/stream-analytics-with-azure-functions/image3.png)
+   ![Schermafbeelding met het tabblad Platformfuncties waarop App Service-editor is geselecteerd.](./media/stream-analytics-with-azure-functions/image3.png)
 
 5. Klik in de App Service-editor met de rechtermuisknop op de hoofdmap en upload het bestand **project.json**. Vernieuw de pagina wanneer de upload is voltooid. Nu wordt een automatisch gegenereerd bestand met de naam **project.lock.json** weergegeven. Het automatisch gegenereerde bestand bevat verwijzingen naar de DLL-bestanden die in het bestand project.json zijn opgegeven.  
 
-   ![Schermopname van App Service-editor](./media/stream-analytics-with-azure-functions/image4.png)
+   ![Schermafbeelding waarop Bestanden uploaden is geselecteerd in het menu.](./media/stream-analytics-with-azure-functions/image4.png)
 
 ## <a name="update-the-stream-analytics-job-with-the-function-as-output"></a>De Stream Analytics-taak bijwerken met de functie als uitvoer
 
@@ -198,7 +201,7 @@ Als tijdens het verzenden van gebeurtenissen naar Azure Functions een fout optre
 
 Wanneer u in Azure Portal de waarde van Maximale batchgrootte/Maximum aantal batches probeert leeg te maken (standaard), verandert de waarde weer in de eerder ingevoerde waarde wanneer u de gegevens opslaat. Voer in dat geval de standaardwaarden voor deze velden handmatig in.
 
-Het gebruik van [HTTP-routering](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp) in Azure Functions wordt momenteel niet ondersteund in Stream Analytics.
+Het gebruik van [HTTP-routering](/sandbox/functions-recipes/routes?tabs=csharp) in Azure Functions wordt momenteel niet ondersteund in Stream Analytics.
 
 Ondersteuning voor verbinding maken met Azure Functions gehost in een virtueel netwerk is niet ingeschakeld.
 

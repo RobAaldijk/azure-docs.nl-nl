@@ -1,20 +1,20 @@
 ---
-title: 'Zelfstudie: Verbinding maken met een Azure SQL-server met behulp van een privé-eindpunt in Azure'
-description: Gebruik deze zelfstudie om te leren hoe u een Azure SQL-server maakt met een privé-eindpunt.
+title: 'Zelfstudie: Verbinding maken met een Azure SQL-server met behulp van een privé-eindpunt in het Azure - Portaal'
+description: Gebruik deze zelfstudie om te leren hoe u een Azure SQL-server maakt met een privé-eindpunt met behulp van het Azure-portaal.
 services: private-link
 author: asudbring
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/20/2020
 ms.author: allensu
-ms.openlocfilehash: d12b377d053ac546efef05d5594568c1c1dbcd0e
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: def14cec9d010104876acaf9588560722dd98884
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92344753"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145664"
 ---
-# <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint"></a>Zelfstudie: Verbinding maken met een Azure SQL-server met behulp van een privé-eindpunt in Azure
+# <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-portal"></a>Zelfstudie: Verbinding maken met een Azure SQL-server met behulp van een privé-eindpunt in Azure - Azure-portaal
 
 Een privé-eindpunt in Azure is de fundamentele bouwsteen voor een Private Link in Azure. Het biedt Azure-resources, zoals virtuele machines, de mogelijkheid om Private Link-resources te gebruiken om privé met elkaar communiceren.
 
@@ -43,7 +43,7 @@ De Bastion-host wordt gebruikt om veilig verbinding te maken met de virtuele mac
 
 1. Selecteer in de linkerbovenhoek van het scherm **Een resource maken > Netwerken > Virtueel netwerk** of zoek naar **Virtueel netwerk** in het zoekvak.
 
-2. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens op het tabblad **Basisinstellingen** :
+2. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens op het tabblad **Basisinstellingen**:
 
     | **Instelling**          | **Waarde**                                                           |
     |------------------|-----------------------------------------------------------------|
@@ -62,7 +62,7 @@ De Bastion-host wordt gebruikt om veilig verbinding te maken met de virtuele mac
     |--------------------|----------------------------|
     | IPv4-adresruimte | Voer **10.1.0.0/16** in |
 
-5. Onder **Subnetnaam** selecteert u het woord **standaard** .
+5. Onder **Subnetnaam** selecteert u het woord **standaard**.
 
 6. Voer in **Subnet bewerken** deze gegevens in:
 
@@ -71,22 +71,22 @@ De Bastion-host wordt gebruikt om veilig verbinding te maken met de virtuele mac
     | Subnetnaam | Open **mySubnet** |
     | Subnetadresbereik | Voer **10.1.0.0/24** in |
 
-7. Selecteer **Opslaan** .
+7. Selecteer **Opslaan**.
 
-8. Selecteer het tabblad **Beveiliging** .
+8. Selecteer het tabblad **Beveiliging**.
 
-9. Selecteer onder **BastionHost** de optie **Inschakelen** . Voer deze gegevens in:
+9. Selecteer onder **BastionHost** de optie **Inschakelen**. Voer deze gegevens in:
 
     | Instelling            | Waarde                      |
     |--------------------|----------------------------|
     | Bastion-naam | Voer **myBastionHost** in |
     | AzureBastionSubnet-adresruimte | Voer **10.1.1.0/24** in |
-    | Openbaar IP-adres | Selecteer **Nieuw maken** . </br> Voer bij **Naam** de naam **myBastionIP** in. </br> Selecteer **OK** . |
+    | Openbaar IP-adres | Selecteer **Nieuw maken**. </br> Voer bij **Naam** de naam **myBastionIP** in. </br> Selecteer **OK**. |
 
 
-8. Selecteer het tabblad **Controleren + maken** of klik op de knop **Controleren + maken** .
+8. Selecteer het tabblad **Controleren + maken** of klik op de knop **Controleren + maken**.
 
-9. Selecteer **Maken** .
+9. Selecteer **Maken**.
 
 ## <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 
@@ -94,7 +94,7 @@ In deze sectie maakt u een virtuele machine die wordt gebruikt om het persoonlij
 
 1. Selecteer in de linkerbovenhoek van het portaal de optie **Een resource maken** > **Compute** > **Virtuele machine** of zoek naar **Virtuele machine** via het zoekvak.
    
-2. In **Een virtuele machine maken** typt of selecteert u de waarden op het tabblad **Basisinformatie** :
+2. In **Een virtuele machine maken** typt of selecteert u de waarden op het tabblad **Basisinformatie**:
 
     | Instelling | Waarde                                          |
     |-----------------------|----------------------------------|
@@ -113,7 +113,7 @@ In deze sectie maakt u een virtuele machine die wordt gebruikt om het persoonlij
     | Wachtwoord | Voer een wachtwoord in |
     | Wachtwoord bevestigen | Voer het wachtwoord opnieuw in |
 
-3. Selecteer het tabblad **Netwerken** of selecteer **Volgende: Schijven** en vervolgens **Volgende: Netwerken** .
+3. Selecteer het tabblad **Netwerken** of selecteer **Volgende: Schijven** en vervolgens **Volgende: Netwerken**.
   
 4. Op het tabblad Netwerken selecteert u of voert u het volgende in:
 
@@ -122,19 +122,19 @@ In deze sectie maakt u een virtuele machine die wordt gebruikt om het persoonlij
     | **Netwerkinterface** |  |
     | Virtueel netwerk | **myVNet** |
     | Subnet | **mySubnet** |
-    | Openbare IP | Selecteer **Geen** . |
+    | Openbare IP | Selecteer **Geen**. |
     | NIC-netwerkbeveiligingsgroep | **Basic**|
-    | Openbare poorten voor inkomend verkeer | Selecteer **Geen** . |
+    | Openbare poorten voor inkomend verkeer | Selecteer **Geen**. |
    
-5. Selecteer **Controleren + maken** . 
+5. Selecteer **Controleren + maken**. 
   
-6. Controleer de instellingen en selecteer vervolgens **Maken** .
+6. Controleer de instellingen en selecteer vervolgens **Maken**.
 
 ## <a name="create-an-azure-sql-server-and-private-endpoint"></a><a name ="create-a-private-endpoint"></a>Een Azure SQL-server en een privé-eindpunt maken
 
 In deze sectie maakt u een SQL-server in Azure. 
 
-1. Selecteer in de linkerbovenhoek van het scherm in de Azure Portal de optie **Een resource maken** > **Databases** > **SQL-database** .
+1. Selecteer in de linkerbovenhoek van het scherm in de Azure Portal de optie **Een resource maken** > **Databases** > **SQL-database**.
 
 1. Typ of selecteer op het tabblad **Basisprincipes** van **SQL-database maken** deze informatie:
 
@@ -142,10 +142,10 @@ In deze sectie maakt u een SQL-server in Azure.
     | ------- | ----- |
     | **Projectgegevens** | |
     | Abonnement | Selecteer uw abonnement. |
-    | Resourcegroep | Selecteer **CreateSQLEndpointTutorial** . U hebt deze resourcegroep in de vorige sectie gemaakt.|
+    | Resourcegroep | Selecteer **CreateSQLEndpointTutorial**. U hebt deze resourcegroep in de vorige sectie gemaakt.|
     | **Databasedetails** |  |
     | Databasenaam  | Voer **mysqldatabase** in. Als deze naam al wordt gebruikt, maakt u een unieke naam. |
-    | Server | Selecteer **Nieuw maken** . |
+    | Server | Selecteer **Nieuw maken**. |
 
 6. Typ of selecteer in **Nieuwe server** de volgende gegevens:
 
@@ -156,40 +156,40 @@ In deze sectie maakt u een SQL-server in Azure.
     | Wachtwoord | Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 8 tekens lang zijn en moet voldoen aan de vooraf gedefinieerde vereisten. |
     | Locatie | Selecteer **VS - oost** |
     
-7. Selecteer **OK** .
+7. Selecteer **OK**.
 
-8. Selecteer het tabblad **Netwerken** of selecteer de **Volgende: Knop Netwerken** .
+8. Selecteer het tabblad **Netwerken** of selecteer de **Volgende: Knop Netwerken**.
 
 9. Typ of selecteer op het tabblad **Netwerken** deze informatie:
 
     | Instelling | Waarde |
     | ------- | ----- |
     | **Netwerkverbinding** | |
-    | Verbindingsmethode | Selecteer **Privé-eindpunt** . |
+    | Verbindingsmethode | Selecteer **Privé-eindpunt**. |
    
-10. Selecteer **+ Privé-eindpunt toevoegen** in **Privé-eindpunten** .
+10. Selecteer **+ Privé-eindpunt toevoegen** in **Privé-eindpunten**.
 
 11. Typ of selecteer in **Privé-eindpunt maken** deze informatie:
 
     | Instelling | Waarde |
     | ------- | ----- |
     | Abonnement | Selecteer uw abonnement. |
-    | Resourcegroep | Selecteer **CreateSQLEndpointTutorial** . |
-    | Locatie | Selecteer **VS - oost** . |
+    | Resourcegroep | Selecteer **CreateSQLEndpointTutorial**. |
+    | Locatie | Selecteer **VS - oost**. |
     | Name | Voer **myPrivateSQLendpoint** in. |
-    | Stel subresource in | Selecteer **SQLServer** . |
+    | Stel subresource in | Selecteer **SQLServer**. |
     | **Netwerken** |  |
-    | Virtueel netwerk | Selecteer **myVNet** . |
-    | Subnet | Selecteer **mySubnet** . |
+    | Virtueel netwerk | Selecteer **myVNet**. |
+    | Subnet | Selecteer **mySubnet**. |
     | **Privé-DNS-integratie** | |
     | Integreren met privé-DNS-zone | Laat de standaardwaarde **Ja** staan. |
     | Privé-DNS-zone | Laat de standaardwaarde **(Nieuwe) privatelink.blob.core.windows.net** staan. |
 
-12. Selecteer **OK** . 
+12. Selecteer **OK**. 
 
-13. Selecteer **Controleren + maken** .
+13. Selecteer **Controleren + maken**.
 
-14. Selecteer **Maken** .
+14. Selecteer **Maken**.
 
 ## <a name="test-connectivity-to-private-endpoint"></a>Privé-eindpuntconnectiviteit testen
 
@@ -197,13 +197,13 @@ In deze sectie gebruikt u de virtuele machine die u in de vorige stap hebt gemaa
 
 1. Selecteer **Resourcegroepen** in het linkernavigatievenster.
 
-2. Selecteer **CreateSQLEndpointTutorial** .
+2. Selecteer **CreateSQLEndpointTutorial**.
 
-3. Selecteer **myVM** .
+3. Selecteer **myVM**.
 
-4. Selecteer op de overzichtspagina voor **myVM** de optie **Verbinding maken** en daarna **Bastion** .
+4. Selecteer op de overzichtspagina voor **myVM** de optie **Verbinding maken** en daarna **Bastion**.
 
-5. Selecteer de blauwe knop **Bastion gebruiken** .
+5. Selecteer de blauwe knop **Bastion gebruiken**.
 
 6. Voer de gebruikersnaam en het wachtwoord in die u hebt ingevoerd bij het maken van de virtuele machine.
 
@@ -224,31 +224,31 @@ In deze sectie gebruikt u de virtuele machine die u in de vorige stap hebt gemaa
     Er wordt een privé-IP-adres **10.1.0.5** geretourneerd voor de naam van de SQL-server.  Dit adres bevindt zich in het subnet van het virtuele netwerk dat u eerder hebt gemaakt.
 
 
-9. Installeer [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) op **myVM** .
+9. Installeer [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) op **myVM**.
 
-10. Open **SQL Server Management Studio** .
+10. Open **SQL Server Management Studio**.
 
 4. Typ of selecteer in **Verbinding maken met server** de volgende gegevens:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Servertype | Selecteer **Database Engine** .|
+    | Servertype | Selecteer **Database Engine**.|
     | Servernaam | Voer **\<sqlserver-name>.database.windows.net** in |
-    | Verificatie | Selecteer **SQL Server-verificatie** . |
+    | Verificatie | Selecteer **SQL Server-verificatie**. |
     | Gebruikersnaam | Voer de gebruikersnaam in die u hebt opgegeven tijdens het maken van de server |
     | Wachtwoord | Voer het wachtwoord in dat u hebt opgegeven tijdens het maken van de server |
-    | Wachtwoord onthouden | Selecteer **Ja** . |
+    | Wachtwoord onthouden | Selecteer **Ja**. |
 
-1. Selecteer **Verbinden** .
+1. Selecteer **Verbinden**.
 2. Blader in het menu aan de linkerkant door databases.
 3. (Optioneel) U kunt **mysqldatabase** maken of er een query op uitvoeren.
-4. Sluit de externe bureaubladverbinding met **myVM** . 
+4. Sluit de externe bureaubladverbinding met **myVM**. 
 
 ## <a name="clean-up-resources"></a>Resources opschonen 
 Wanneer u klaar bent met het privé-eindpunt, de SQL-server en de VM, verwijdert u de resourcegroep en alle resources die deze bevat: 
 1. Typ **CreateSQLEndpointTutorial** in het **Zoekvak** bovenaan de portal, en selecteer **CreateSQLEndpointTutorial** in de zoekresultaten. 
-2. Selecteer **Resourcegroep verwijderen** . 
-3. Type CreateSQLEndpointTutorial bij **NAAM VAN RESOURCEGROEP TYPEN** en selecteer **Verwijderen** .
+2. Selecteer **Resourcegroep verwijderen**. 
+3. Type CreateSQLEndpointTutorial bij **NAAM VAN RESOURCEGROEP TYPEN** en selecteer **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

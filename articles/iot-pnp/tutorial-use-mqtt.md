@@ -1,20 +1,20 @@
 ---
-title: Een IoT Plug en Play-apparaatclient maken met MQTT | Microsoft Docs
-description: Rechtstreeks het MQTT-protocol gebruiken om een IoT Plug en Play-apparaatclient te maken zonder de Azure IoT Device SDK's te gebruiken
+title: Zelgstudie - MQTT gebruiken om een Azure IoT Plug en Play-apparaatclient te maken | Microsoft Docs
+description: Zelfstudie - Rechtstreeks het MQTT-protocol gebruiken om een IoT Plug en Play-apparaatclient te maken zonder de Azure IoT Device SDK's te gebruiken
 author: ericmitt
 ms.author: ericmitt
 ms.date: 05/13/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d0ac0f000b6a096ae3de1f4f00a17b64f1948c1e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6852b0532b23e46c7b986926b21cd0b7e9f9736d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046278"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421376"
 ---
-# <a name="use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>Een IoT Plug en Play-apparaatclient ontwikkelen met MQTT
+# <a name="tutorial---use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>Zelfstudie - Een IoT Plug en Play-apparaatclient ontwikkelen met MQTT
 
 U moet een van de Azure IoT Device SDK's gebruiken om zo mogelijk uw IoT Plug en Play-apparaatclients te bouwen. In bepaalde scenario's, zoals wanneer u een apparaat met beperkt geheugen gebruikt, moet u echter mogelijk een MQTT-bibliotheek gebruiken om met uw IoT-hub te communiceren.
 
@@ -96,7 +96,7 @@ Voer de toepassing uit (CTRL + F5). Na een paar seconden wordt er uitvoer weerge
 
 In Azure IoT Explorer kunt u zien dat het apparaat geen IoT Plug en Play-apparaat is:
 
-:::image type="content" source="media/tutorial-use-mqtt/non-pnp-iot-explorer.png" alt-text="Uitvoer van MQTT-voorbeeldtoepassing":::
+:::image type="content" source="media/tutorial-use-mqtt/non-pnp-iot-explorer.png" alt-text="Niet-IoT Plug en Play-apparaat in Azure IoT Explorer":::
 
 ### <a name="make-the-device-an-iot-plug-and-play-device"></a>Van het apparaat een IoT Plug en Play-apparaat maken
 
@@ -117,11 +117,11 @@ Herbouw het voorbeeld en voer het uit.
 
 De apparaatdubbel bevat nu de model-id:
 
-:::image type="content" source="media/tutorial-use-mqtt/model-id-iot-explorer.png" alt-text="Uitvoer van MQTT-voorbeeldtoepassing":::
+:::image type="content" source="media/tutorial-use-mqtt/model-id-iot-explorer.png" alt-text="De model-id in Azure IoT Explorer weergeven":::
 
 U kunt nu navigeren naar het IoT Plug en Play-onderdeel:
 
-:::image type="content" source="media/tutorial-use-mqtt/components-iot-explorer.png" alt-text="Uitvoer van MQTT-voorbeeldtoepassing":::
+:::image type="content" source="media/tutorial-use-mqtt/components-iot-explorer.png" alt-text="Onderdelen in Azure IoT Explorer weergeven":::
 
 U kunt nu uw apparaatcode aanpassen voor het implementeren van de telemetrie, eigenschappen en opdrachten die in uw model zijn gedefinieerd. Voor een voorbeeldimplementatie van het thermostaatapparaat met behulp van de Mosquitto-bibliotheek, raadpleegt u [Using MQTT PnP with Azure IoTHub without the IoT SDK on Windows](https://github.com/Azure-Samples/IoTMQTTSample/tree/master/src/Windows/PnPMQTTWin32) (MQTT PnP met Azure IoTHub gebruiken zonder de IoT SDK op Windows) op GitHub.
 

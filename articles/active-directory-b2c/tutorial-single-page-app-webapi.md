@@ -11,12 +11,12 @@ ms.custom: mvc, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 9fe1363ffc714754c1de333a77d36595ce4223e6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 737810a7d07d0d97b2e42acffa17fdd32986c48b
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442334"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421087"
 ---
 # <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>Zelfstudie: Een Node.js-web-API beveiligen en toegang verlenen vanuit een toepassing met één pagina met Azure AD B2C
 
@@ -56,11 +56,11 @@ Noteer de waarde onder **Bereiken** voor het bereik `demo.read` voor gebruik in 
 
 Als u een beveiligde web-API wilt aanroepen vanuit een andere toepassing, moet u uw toepassing machtigingen geven voor de web-API.
 
-In de vereiste zelfstudie hebt u een webtoepassing gemaakt met de naam *webapp1*. In deze zelfstudie configureert u die toepassing om de web-API aan te roepen die u in een vorige sectie hebt gemaakt, *webapi1*.
+In de vereiste zelfstudie heft u een toepassing met één pagina met de naam *spaapp1* gemaakt. In deze zelfstudie configureert u die toepassing om de web-API aan te roepen die u in een vorige sectie hebt gemaakt, *spaapp1*.
 
 [!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
-Aan uw webtoepassing met één pagina zijn nu machtigingen voor de beveiligde web-API verleend voor de opgegeven bereiken. Een gebruiker voert een verificatie uit bij Azure AD B2C om de toepassing met één pagina te kunnen gebruiken. De app met één pagina gebruikt de stroom autorisatietoekenningen om toegang te krijgen tot de beveiligde web-API met een toegangstoken dat door Azure AD B2C is geretourneerd.
+Aan uw webtoepassing met één pagina zijn nu machtigingen voor de beveiligde web-API verleend voor de opgegeven bereiken. Een gebruiker voert een verificatie uit bij Azure AD B2C om de toepassing met één pagina te kunnen gebruiken. De app met één pagina verkrijgt een toegangstoken van Azure AD B2C voor toegang tot de beveiligde web-API.
 
 ## <a name="configure-the-sample"></a>Voorbeeld configureren
 
@@ -161,7 +161,7 @@ Hoewel beide toepassingen lokaal worden uitgevoerd wanneer u deze zelfstudie vol
 1. Open een ander consolevenster en ga naar de map met het JavaScript SPA-voorbeeld. Bijvoorbeeld:
 
     ```console
-    cd active-directory-b2c-javascript-msal-singlepageapp
+    cd ms-identity-b2c-javascript-spa
     ```
 
 1. Voer de volgende opdrachten uit:

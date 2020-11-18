@@ -1,6 +1,6 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 services: iot-central
 author: dominicbetts
 ms.service: iot-central
@@ -8,82 +8,44 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 164f5803b6e9e62447423735e98f6e4c36c73f13
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: de916fcbe0623185821e2f5da15a8f9cf71dfd4e
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876629"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426739"
 ---
-### <a name="add-relationships"></a>Relaties toevoegen
-
-Selecteer in de apparaatsjabloon **LVA Edge Gateway** onder **Modules/LVA Edge Gateway-module** de optie **Relaties**. Selecteer **+ Relatie toevoegen** en voeg de volgende twee relaties toe:
-
-|Weergavenaam               |Naam          |Doel |
-|-------------------------- |------------- |------ |
-|LVA Edge-bewegingsdetector   |Standaardwaarde gebruiken   |LVA Edge-bewegingsdetectorapparaat |
-|LVA Edge-objectdetector   |Standaardwaarde gebruiken   |LVA Edge-objectdetectorapparaat |
-
-Selecteer vervolgens **Opslaan**.
-
-:::image type="content" source="media/iot-central-video-analytics-part4/relationships.png" alt-text="Relaties toevoegen":::
-
-### <a name="add-views"></a>Weergaven toevoegen
-
-De apparaatsjabloon **LVA Edge Gateway** bevat geen weergavedefinities.
-
-Een weergave toevoegen aan de sjabloon voor het apparaat:
-
-1. Navigeer in de apparaatsjabloon **LVA Edge Gateway** naar **Weergaven** en selecteer de tegel **Het apparaat visualiseren**.
-
-1. Voer *LVA Edge Gateway-apparaat* als de weergavenaam in.
-
-1. Voeg de volgende tegels aan de weergave toe:
-
-    * Een tegel met de **Apparaatgegevens**-eigenschappen: **Apparaatmodel**, **Fabrikant**, **Besturingssysteem**, **Processorarchitectuur**, **Softwareversie**, **Totaal geheugen** en **Totale opslagruimte**.
-    * Een tegel Lijndiagram met de telemetriewaarden **Beschikbaar geheugen** en **Systeem-heartbeat**.
-    * Een tegel Gebeurtenissengeschiedenis met de volgende gebeurtenissen: **Camera maken**, **Camera verwijderen**, **Module opnieuw opstarten**, **Module gestart**, **Module gestopt**.
-    * Een 2x1 tegel Laatst bekende waarde met de telemetrie **IoT Central-clientstatus**.
-    * Een 2x1 tegel Laatst bekende waarde met de telemetrie **Modulestatus**.
-    * Een 1x1 tegel Laatst bekende waarde met de telemetrie **Systeem-heartbeat**.
-    * Een 1x1 tegel Laatst bekende waarde met de telemetrie **Verbonden camera’s**.
-
-    :::image type="content" source="media/iot-central-video-analytics-part4/gateway-dashboard.png" alt-text="Relaties toevoegen":::
-
-1. Selecteer **Opslaan**.
-
 ### <a name="publish-the-device-template"></a>De apparaatsjabloon publiceren
 
 Voordat u een apparaat aan de toepassing kunt toevoegen, moet u de apparaatsjabloon publiceren:
 
-1. Selecteer in de apparaatsjabloon **LVA Edge Gateway** de optie **Publiceren**.
+1. Selecteer in de apparaatsjabloon **LVA Edge Gateway v2** de optie **Publiceren**.
 
 1. Selecteer op de pagina **Deze apparaatsjabloon publiceren naar de toepassing** de optie **Publiceren**.
 
-**LVA Edge Gateway** is nu beschikbaar als apparaattype voor gebruik op de pagina **Apparaten** in de toepassing.
+**LVA Edge Gateway v2** is nu beschikbaar als apparaattype voor gebruik op de pagina **Apparaten** in de toepassing.
 
-## <a name="add-a-gateway-device"></a>Een gatewayapparaat toevoegen
+## <a name="migrate-the-gateway-device"></a>Het gatewayapparaat migreren
 
-Een **LVA Edge Gateway**-apparaat aan de toepassing toevoegen:
+De bestaande apparaat **gateway-001** maakt gebruik van het apparaatsjabloon **LVA Edge Gateway**. Als u uw nieuwe implementatiemanifest wilt gebruiken, migreert u het apparaat naar het nieuwe apparaatsjabloon:
 
-1. Navigeer naar de pagina **Apparaten** en selecteer de apparaatsjabloon **LVA Edge Gateway**.
+Om het apparaat **gateway-001** te migreren:
 
-1. Selecteer **+ Nieuw**.
+1. Navigeer naar de pagina **Apparaten** en selecteer het apparaat **gateway-001** om het te markeren in de lijst.
 
-1. In het dialoogvenster **Een nieuw apparaat maken** wijzigt u de apparaatnaam in *LVA Gateway 001* en wijzigt u de apparaat-id in *lva-gateway-001*.
+1. Selecteer **Migreren**. Als het pictogram **Migreren** niet wordt weergegeven, selecteert u **...** om meer opties weer te geven.
 
-    > [!NOTE]
-    > De apparaat-id moet uniek zijn in de toepassing.
+    :::image type="content" source="media/iot-central-video-analytics-part4/migrate-device.png" alt-text="Het gatewayapparaat migreren naar een nieuwe versie":::
 
-1. Selecteer **Maken**.
+1. Selecteer in de lijst in het dialoogvenster **Migreren** **LVA Edge Gateway v2** en vervolgens **Migreren**.
 
-De apparaatstatus is **Geregistreerd**.
+Na enkele seconden is de migratie voltooid. Uw apparaat gebruikt nu het apparaatsjabloon **LVA Edge Gateway v2** met uw aangepaste implementatiemanifest.
 
 ### <a name="get-the-device-credentials"></a>De apparaatreferenties ophalen
 
 U hebt de referenties nodig waarmee het apparaat verbinding kan maken met uw IoT Central-toepassing. De apparaatreferenties ophalen:
 
-1. Selecteer op de pagina **Apparaten** het apparaat **lva-gateway-001** dat u hebt gemaakt.
+1. Selecteer op de pagina **Apparaten** het apparaat **gateway-001**.
 
 1. Selecteer **Verbinding maken**.
 

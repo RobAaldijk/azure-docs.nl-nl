@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 689de4d9fbd9eafeda54b8c157e5174d200c93da
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: f788c9e78790e6872870869e2bc153e1b1451e51
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94338253"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566534"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Zelfstudie: Een end-to-end-oplossing bouwen
 
@@ -27,7 +27,7 @@ In deze zelfstudie gaat u...
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
 
 ### <a name="set-up-cloud-shell-session"></a>Een Cloud Shell-sessie instellen
 [!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
@@ -40,7 +40,7 @@ Het voorbeeldproject dat in deze zelfstudie wordt gebruikt, is een realistisch *
 
 Hieronder ziet u een diagram dat het volledige scenario weergeeft. 
 
-Eerst maakt u de Azure Digital Twins-instantie ( **sectie A** in het diagram) en vervolgens stelt u de gegevensstroom van de telemetrie naar de digitale tweelingen ( **pijl B** ) in, waarna u de gegevensdoorgifte instelt via de tweelinggrafiek ( **pijl C** ).
+Eerst maakt u de Azure Digital Twins-instantie (**sectie A** in het diagram) en vervolgens stelt u de gegevensstroom van de telemetrie naar de digitale tweelingen (**pijl B**) in, waarna u de gegevensdoorgifte instelt via de tweelinggrafiek (**pijl C**).
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario.png" alt-text="Afbeelding van het volledige gebouwscenario. Illustreert gegevens die van een apparaat naar IoT Hub stromen, via een Azure-functie (pijl B) naar een Azure Digital Twins-instantie (sectie A), en vervolgens via Event Grid naar een andere Azure-functie voor verwerking (pijl C)":::
 
@@ -48,16 +48,16 @@ Bij het doorwerken van het scenario interageert u met onderdelen van de vooraf g
 
 Hier volgen de onderdelen die worden geïmplementeerd door de voorbeeld-app *AdtSampleApp* van het gebouwscenario:
 * Apparaatverificatie 
-* [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)-gebruiksvoorbeelden (te vinden in *CommandLoop.cs* )
+* [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)-gebruiksvoorbeelden (te vinden in *CommandLoop.cs*)
 * Console-interface voor het aanroepen van de Azure Digital Twins-API
-* *SampleClientApp* : een voorbeeld van een Azure Digital Twins-oplossing
-* *SampleFunctionsApp* : een Azure Functions-app die uw Azure Digital Twins-grafiek bijgewerkt als resultaat van telemetrie van IoT Hub en Azure Digital Twins-gebeurtenissen
+* *SampleClientApp*: een voorbeeld van een Azure Digital Twins-oplossing
+* *SampleFunctionsApp*: een Azure Functions-app die uw Azure Digital Twins-grafiek bijgewerkt als resultaat van telemetrie van IoT Hub en Azure Digital Twins-gebeurtenissen
 
 Het voorbeeldproject bevat ook een interactieve autorisatiecomponent. Telkens wanneer u het project start, wordt er een browservenster geopend waarin u wordt gevraagd om u aan te melden met uw Azure-account.
 
 ### <a name="instantiate-the-pre-created-twin-graph"></a>De vooraf gemaakte tweelinggrafiek instantiëren
 
-Eerst gebruikt u de *AdtSampleApp* -oplossing uit het voorbeeldproject om het Azure Digital Twins-deel van het end-to-end scenario ( **sectie A** ) te bouwen:
+Eerst gebruikt u de *AdtSampleApp*-oplossing uit het voorbeeldproject om het Azure Digital Twins-deel van het end-to-end scenario (**sectie A**) te bouwen:
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-a.png" alt-text="Een fragment van de volledige afbeelding van het gebouwscenario, waar sectie A, de Azure Digital Twins-instantie, eruit wordt gelicht":::
 
@@ -74,7 +74,7 @@ Er wordt een consolevenster geopend, de verificatie wordt uitgevoerd en er wordt
 SetupBuildingScenario
 ```
 
-De uitvoer van deze opdracht is een reeks bevestigingsberichten terwijl er [**digitale tweelingen**](concepts-twins-graph.md) worden gemaakt en verbonden in uw Azure Digital Twins-instantie: een verdieping met de naam *floor1* , een ruimte met de naam *room21* en een temperatuursensor met de naam *thermostat67*. Deze digitale tweelingen vertegenwoordigen de entiteiten die zouden bestaan in een werkelijke omgeving.
+De uitvoer van deze opdracht is een reeks bevestigingsberichten terwijl er [**digitale tweelingen**](concepts-twins-graph.md) worden gemaakt en verbonden in uw Azure Digital Twins-instantie: een verdieping met de naam *floor1*, een ruimte met de naam *room21* en een temperatuursensor met de naam *thermostat67*. Deze digitale tweelingen vertegenwoordigen de entiteiten die zouden bestaan in een werkelijke omgeving.
 
 Ze worden via relaties verbonden tot de volgende [**tweelinggrafiek**](concepts-twins-graph.md). De tweelinggrafiek vertegenwoordigt de omgeving als geheel, met inbegrip van de relaties tussen de entiteiten en de manier waarop ze met elkaar interageren.
 
@@ -100,13 +100,13 @@ Hierna kunt u stoppen met het uitvoeren van het project. Maar houd de oplossing 
 
 ## <a name="set-up-the-sample-function-app"></a>De voorbeeldfunctie-app instellen
 
-De volgende stap is het instellen van een [Azure Functions-app-](../azure-functions/functions-overview.md) die tijdens deze zelfstudie wordt gebruikt om gegevens te verwerken. De functie-app, *SampleFunctionsApp* , bevat twee functies:
-* *ProcessHubToDTEvents* : verwerkt inkomende IoT Hub-gegevens en werkt Azure Digital Twins dienovereenkomstig bij
-* *ProcessDTRoutedData* : verwerkt gegevens van digitale tweelingen en werkt de bovenliggende tweelingen in Azure Digital Twins dienovereenkomstig bij
+De volgende stap is het instellen van een [Azure Functions-app-](../azure-functions/functions-overview.md) die tijdens deze zelfstudie wordt gebruikt om gegevens te verwerken. De functie-app, *SampleFunctionsApp*, bevat twee functies:
+* *ProcessHubToDTEvents*: verwerkt inkomende IoT Hub-gegevens en werkt Azure Digital Twins dienovereenkomstig bij
+* *ProcessDTRoutedData*: verwerkt gegevens van digitale tweelingen en werkt de bovenliggende tweelingen in Azure Digital Twins dienovereenkomstig bij
 
 In deze sectie publiceert u de vooraf geschreven functie-app en zorgt u ervoor dat de functie-app toegang kan krijgen tot Azure Digital Twins door hieraan een AAD-identiteit (Azure Active Directory) toe te wijzen. Door deze stappen uit te voeren, kan de rest van de zelfstudie gebruikmaken van de functies in de functie-app. 
 
-Terug in het Visual Studio-venster waarin het _**AdtE2ESample**_ -project is geopend, staat de functie-app in het projectbestand _**SampleFunctionsApp**_. U kunt deze weergeven in het deelvenster *Solution Explorer*.
+Terug in het Visual Studio-venster waarin het _**AdtE2ESample**_-project is geopend, staat de functie-app in het projectbestand _**SampleFunctionsApp**_. U kunt deze weergeven in het deelvenster *Solution Explorer*.
 
 ### <a name="update-dependencies"></a>Afhankelijkheden bijwerken
 
@@ -144,13 +144,13 @@ Vul de velden in het venster *Function App (Windows) - Create new* (Functie-app 
 * Zorg ervoor dat de **Resource group** overeenkomt met de resourcegroep die u wilt gebruiken
 * Laat het **Plan type** staan op *Consumption* (verbruik)
 * Selecteer de **Location** die overeenkomt met de locatie van uw resourcegroep
-* Maak een nieuwe **Azure Storage** -resource met behulp van de koppeling *New...* . Stel de locatie in overeenkomstig uw resourcegroep, gebruik de standaardwaarden voor de overige velden en klik op OK.
+* Maak een nieuwe **Azure Storage**-resource met behulp van de koppeling *New...* . Stel de locatie in overeenkomstig uw resourcegroep, gebruik de standaardwaarden voor de overige velden en klik op OK.
 
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="Azure-functie publiceren in Visual Studio: Functie-app (Windows) - Nieuwe maken":::
 
 Ten slotte selecteert u **Create**.
 
-Hiermee gaat u terug naar de pagina *Functions instance* , waar uw nieuwe functie-app nu onder uw resourcegroep wordt weergegeven. Klik op *Finish* (voltooien).
+Hiermee gaat u terug naar de pagina *Functions instance*, waar uw nieuwe functie-app nu onder uw resourcegroep wordt weergegeven. Klik op *Finish* (voltooien).
 
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-5.png" alt-text="Azure-functie publiceren in Visual Studio: Functions-instantie (na functie-app)":::
 
@@ -162,7 +162,7 @@ Controleer in het deelvenster *Publish* dat wordt geopend in het hoofdvenster va
 > Als u een pop-up als deze ziet: :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Publish Azure function in Visual Studio: publish credentials" border="false"::: (Azure-functie in Visual Studio publiceren: referenties publiceren)
 > U selecteert **Attempt to retrieve credentials from Azure** (probeer referenties op te halen uit Azure) en **Save** (opslaan).
 >
-> Als er een waarschuwing wordt weergegeven dat *u de versie van Functions moet bijwerken op Azure* of dat *uw versie van de Functions-runtime niet overeenkomt met de versie die wordt uitgevoerd in Azure* :
+> Als er een waarschuwing wordt weergegeven dat *u de versie van Functions moet bijwerken op Azure* of dat *uw versie van de Functions-runtime niet overeenkomt met de versie die wordt uitgevoerd in Azure*:
 >
 > Volg de prompts om een upgrade uit te voeren naar de meest recente runtime-versie van Azure Functions. Dit probleem kan optreden als u werkt met een oudere versie van Visual Studio dan de versie die wordt vermeld in de sectie *Vereisten* aan het begin van deze zelfstudie.
 
@@ -198,7 +198,7 @@ Een Azure Digital Twins-grafiek is bedoeld om te worden aangedreven door telemet
 
 In deze stap verbindt u een gesimuleerd thermostaatapparaat dat in [IoT Hub](../iot-hub/about-iot-hub.md) is geregistreerd met de digitale tweeling die het vertegenwoordigt in Azure Digital Twins. Wanneer het gesimuleerde apparaat telemetrie verzendt, worden de gegevens door de Azure-functie *ProcessHubToDTEvents* geleid, die een overeenkomstige update activeert in de digitale tweeling. Op deze manier blijft de digitale tweeling up-to-date met de gegevens van het echte apparaat. In Azure Digital Twins wordt het proces waar mee gebeurtenisgegevens van de ene plaats naar de andere worden geleid [**gebeurtenisroutering**](concepts-route-events.md) genoemd.
 
-Dat gebeurt in dit deel van het end-to-end-scenario ( **pijl B** ):
+Dat gebeurt in dit deel van het end-to-end-scenario (**pijl B**):
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-b.png" alt-text="Een fragment van de volledige afbeelding van het gebouwscenario, waar pijl B, de elementen voor Azure Digital Twins: het apparaat, IoT Hub en de eerste Azure-functie eruit worden gelicht":::
 
@@ -238,12 +238,12 @@ Hiermee wordt de pagina *Gebeurtenisabonnement maken* weergegeven.
 :::image type="content" source="media/tutorial-end-to-end/event-subscription-2.png" alt-text="Azure-portal: gebeurtenisabonnement maken":::
 
 Vul de velden als volgt in (velden die standaard worden ingevuld, worden niet vermeld):
-* *GEBEURTENISABONNEMENTDETAILS* > **Naam** : Geef een naam op voor uw gebeurtenisabonnement.
-* *DETAILS VAN HET ONDERWERP* > **Naam van systeemonderwerp** : Geef een naam op voor het systeemonderwerp. 
-* *GEBEURTENISTYPEN* > **Filteren op gebeurtenistypen** : Selecteer *Apparaattelemetrie* uit de menuopties.
-* *DETAILS VAN EINDPUNT* > **Type eindpunt** : Selecteer *Azure-functie* in de menuopties.
-* *DETAILS VAN EINDPUNT* > **Eindpunt** : Klik op de koppeling *Selecteer een eindpunt*. Hierdoor wordt het venster *Azure-functie selecteren* geopend: :::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="Azure-portal-gebeurtenisabonnement: Azure-functie selecteren" border="false":::
-    - Vul uw **Abonnement** , **Resourcegroep** , **Functie-app** en **Functie** in ( *ProcessHubToDTEvents* ). Sommige van deze waarden worden mogelijk automatisch ingevuld nadat u het abonnement hebt geselecteerd.
+* *GEBEURTENISABONNEMENTDETAILS* > **Naam**: Geef een naam op voor uw gebeurtenisabonnement.
+* *DETAILS VAN HET ONDERWERP* > **Naam van systeemonderwerp**: Geef een naam op voor het systeemonderwerp. 
+* *GEBEURTENISTYPEN* > **Filteren op gebeurtenistypen**: Selecteer *Apparaattelemetrie* uit de menuopties.
+* *DETAILS VAN EINDPUNT* > **Type eindpunt**: Selecteer *Azure-functie* in de menuopties.
+* *DETAILS VAN EINDPUNT* > **Eindpunt**: Klik op de koppeling *Selecteer een eindpunt*. Hierdoor wordt het venster *Azure-functie selecteren* geopend: :::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="Azure-portal-gebeurtenisabonnement: Azure-functie selecteren" border="false":::
+    - Vul uw **Abonnement**, **Resourcegroep**, **Functie-app** en **Functie** in (*ProcessHubToDTEvents*). Sommige van deze waarden worden mogelijk automatisch ingevuld nadat u het abonnement hebt geselecteerd.
     - Klik op **Selectie bevestigen**.
 
 Klik op **Maken** op de pagina *Gebeurtenisabonnement maken*.
@@ -283,7 +283,7 @@ Open in een nieuw Visual Studio-venster (vanuit de map met de gedownloade oploss
 >[!NOTE]
 > Als het goed is, hebt u nu twee Visual Studio-vensters: een met _**DeviceSimulator.sln**_ en een van eerder met _**AdtE2ESample.sln**_.
 
-Selecteer in het deelvenster *Solution Explorer* in dit nieuwe Visual Studio-venster _DeviceSimulator/ **AzureIoTHub.cs**_ om het te openen in het bewerkingsvenster. Wijzig de volgende verbindingsreekswaarden in de waarden die u hierboven hebt verzameld:
+Selecteer in het deelvenster *Solution Explorer* in dit nieuwe Visual Studio-venster _DeviceSimulator/**AzureIoTHub.cs**_ om het te openen in het bewerkingsvenster. Wijzig de volgende verbindingsreekswaarden in de waarden die u hierboven hebt verzameld:
 
 ```csharp
 iotHubConnectionString = <your-hub-connection-string>
@@ -292,7 +292,7 @@ deviceConnectionString = <your-device-connection-string>
 
 Sla het bestand op.
 
-Voer nu met deze knop op de werkbalk het **DeviceSimulator** -project uit om de resultaten te zien van de gegevenssimulatie die u hebt ingesteld:
+Voer nu met deze knop op de werkbalk het **DeviceSimulator**-project uit om de resultaten te zien van de gegevenssimulatie die u hebt ingesteld:
 
 :::image type="content" source="media/tutorial-end-to-end/start-button-simulator.png" alt-text="De startknop van Visual Studio (project DeviceSimulator)":::
 
@@ -324,7 +324,7 @@ Nadat u hebt geverifieerd dat dit goed werkt, kunt u stoppen met het uitvoeren v
 
 Tot zover hebt u in deze zelfstudie gezien hoe Azure Digital Twins kan worden bijgewerkt met externe apparaatgegevens. Nu gaat u zien hoe wijzigingen in één digitale tweeling kunnen worden doorgevoerd in de Azure Digital Twins-grafiek; met andere woorden, hoe tweelingen kunnen worden bijgewerkt met interne gegevens van de service.
 
-Om dit te doen gebruikt u de Azure-functie *ProcessDTRoutedData* om een *Room* -tweeling bij te werken wanneer de verbonden *Thermostat* -tweeling wordt bijgewerkt. Dat gebeurt in dit deel van het end-to-end-scenario ( **pijl C** ):
+Om dit te doen gebruikt u de Azure-functie *ProcessDTRoutedData* om een *Room*-tweeling bij te werken wanneer de verbonden *Thermostat*-tweeling wordt bijgewerkt. Dat gebeurt in dit deel van het end-to-end-scenario (**pijl C**):
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-c.png" alt-text="Een fragment van de volledige afbeelding van het gebouwscenario, waar pijl C, de elementen na Azure Digital Twins: het Event Grid en de tweede Azure-functie eruit worden gelicht":::
 
@@ -391,7 +391,7 @@ De uitvoer van deze opdracht is informatie over de route die u hebt gemaakt.
 
 Abonneer vervolgens de Azure-functie *ProcessDTRoutedData* op het gebeurtenisrasteronderwerp dat u eerder hebt gemaakt, zodat telemetriegegevens van de tweeling *thermostat67* door het gebeurtenisrasteronderwerp naar de functie kan stromen, die teruggaat naar Azure Digital Twins en de tweeling *room21* dienovereenkomstig bijwerkt.
 
-Hiervoor maakt u een **Event Grid-abonnement** van uw gebeurtenisrasteronderwerp naar uw *ProcessDTRoutedData* -functie als een eindpunt.
+Hiervoor maakt u een **Event Grid-abonnement** van uw gebeurtenisrasteronderwerp naar uw *ProcessDTRoutedData*-functie als een eindpunt.
 
 Ga in de [Azure-portal](https://portal.azure.com/)naar uw gebeurtenisrasteronderwerp door de naam ervan te zoeken in de bovenste zoekbalk. Selecteer *+ Gebeurtenisabonnement*.
 
@@ -400,10 +400,10 @@ Ga in de [Azure-portal](https://portal.azure.com/)naar uw gebeurtenisrasteronder
 De stappen voor het maken van dit gebeurtenisabonnement lijken op degene voor het abonneren van de eerste Azure-functie op IoT Hub eerder in deze zelfstudie. Deze keer hoeft u niet *Apparaattelemetrie* op te geven als het gebeurtenistype waarnaar moet worden geluisterd, en dat u verbinding maakt met een andere Azure-functie.
 
 Vul de velden op de pagina *Gebeurtenisabonnement maken* als volgt in (velden die automatisch worden ingevuld, worden niet vermeld):
-* *GEBEURTENISABONNEMENTDETAILS* > **Naam** : Geef een naam op voor uw gebeurtenisabonnement.
-* *DETAILS VAN EINDPUNT* > **Type eindpunt** : Selecteer *Azure-functie* in de menuopties.
-* *DETAILS VAN EINDPUNT* > **Eindpunt** : Klik op de koppeling *Selecteer een eindpunt*. Hierdoor wordt het venster *Azure-functie selecteren* geopend:
-    - Vul uw **Abonnement** , **Resourcegroep** , **Functie-app** en **Functie** in ( *ProcessDTRoutedData* ). Sommige van deze waarden worden mogelijk automatisch ingevuld nadat u het abonnement hebt geselecteerd.
+* *GEBEURTENISABONNEMENTDETAILS* > **Naam**: Geef een naam op voor uw gebeurtenisabonnement.
+* *DETAILS VAN EINDPUNT* > **Type eindpunt**: Selecteer *Azure-functie* in de menuopties.
+* *DETAILS VAN EINDPUNT* > **Eindpunt**: Klik op de koppeling *Selecteer een eindpunt*. Hierdoor wordt het venster *Azure-functie selecteren* geopend:
+    - Vul uw **Abonnement**, **Resourcegroep**, **Functie-app** en **Functie** in (*ProcessDTRoutedData*). Sommige van deze waarden worden mogelijk automatisch ingevuld nadat u het abonnement hebt geselecteerd.
     - Klik op **Selectie bevestigen**.
 
 Klik op **Maken** op de pagina *Gebeurtenisabonnement maken*.
@@ -412,7 +412,7 @@ Klik op **Maken** op de pagina *Gebeurtenisabonnement maken*.
 
 Nu kunt u de apparaatsimulator uitvoeren en de nieuwe gebeurtenisstroom die u het ingesteld in gang zetten. Ga naar uw Visual Studio-venster waar het project _**DeviceSimulator**_ open is, en voer het project uit.
 
-Net als toen u eerder de apparaatsimulator hebt uitgevoerd, wordt er een consolevenster geopend waar gesimuleerde telemetrieberichten met temperaturen worden weergegeven. Deze gebeurtenissen volgen de stroom die u eerder hebt ingesteld om de *thermostat67* -tweeling bij te werken, en vervolgens de stroom die u zojuist hebt ingesteld om de *room21* -tweeling dienovereenkomstig bij te werken.
+Net als toen u eerder de apparaatsimulator hebt uitgevoerd, wordt er een consolevenster geopend waar gesimuleerde telemetrieberichten met temperaturen worden weergegeven. Deze gebeurtenissen volgen de stroom die u eerder hebt ingesteld om de *thermostat67*-tweeling bij te werken, en vervolgens de stroom die u zojuist hebt ingesteld om de *room21*-tweeling dienovereenkomstig bij te werken.
 
 :::image type="content" source="media/tutorial-end-to-end/console-simulator-telemetry.png" alt-text="Console-uitvoer van de apparaatsimulator die laat zien dat er temperatuurtelemetrie wordt verzonden":::
 
@@ -437,8 +437,8 @@ Nadat u hebt geverifieerd dat dit goed werkt, kunt u stoppen met het uitvoeren v
 Hier volgt een overzicht van het scenario dat u in deze zelfstudie hebt uitgebouwd.
 
 1. Een Azure Digital Twins-instance is een digitale weergave van een verdieping, een ruimte en een thermostaat (vertegenwoordigd door **sectie A** in het onderstaande diagram)
-2. Er wordt gesimuleerde apparaattelemetrie verzonden naar IoT Hub, waar de Azure-functie *ProcessHubToDTEvents* luistert naar telemetriegebeurtenissen. De Azure-functie *ProcessHubToDTEvents* gebruikt de informatie in deze gebeurtenissen om de eigenschap *Temperature* van *thermostat67* ( **pijl B** in het diagram) in te stellen.
-3. Eigenschapswijzigingsgebeurtenissen in Azure Digital Twins worden doorgestuurd naar een gebeurtenisrasteronderwerp, waar de Azure-functie *ProcessDTRoutedData* luistert naar gebeurtenissen. De Azure-functie *ProcessDTRoutedData* gebruikt de informatie in deze gebeurtenissen om de eigenschap *Temperature* van *room21* ( **pijl C** in het diagram) in te stellen.
+2. Er wordt gesimuleerde apparaattelemetrie verzonden naar IoT Hub, waar de Azure-functie *ProcessHubToDTEvents* luistert naar telemetriegebeurtenissen. De Azure-functie *ProcessHubToDTEvents* gebruikt de informatie in deze gebeurtenissen om de eigenschap *Temperature* van *thermostat67* (**pijl B** in het diagram) in te stellen.
+3. Eigenschapswijzigingsgebeurtenissen in Azure Digital Twins worden doorgestuurd naar een gebeurtenisrasteronderwerp, waar de Azure-functie *ProcessDTRoutedData* luistert naar gebeurtenissen. De Azure-functie *ProcessDTRoutedData* gebruikt de informatie in deze gebeurtenissen om de eigenschap *Temperature* van *room21* (**pijl C** in het diagram) in te stellen.
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario.png" alt-text="Afbeelding van het volledige gebouwscenario. Illustreert gegevens die van een apparaat naar IoT Hub stromen, via een Azure-functie (pijl B) naar een Azure Digital Twins-instantie (sectie A), en vervolgens via Event Grid naar een andere Azure-functie voor verwerking (pijl C)":::
 

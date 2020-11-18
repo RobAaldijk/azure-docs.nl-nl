@@ -1,19 +1,19 @@
 ---
-title: Node.js-voorbeeldcode voor een IoT Plug and Play-apparaat met meerdere onderdelen koppelen aan IoT Hub | Microsoft Docs
-description: Schrijf Node.js-voorbeeldcode voor een IoT Plug and Play-apparaat dat meerdere onderdelen gebruikt en verbinding maakt met een IoT-hub, en voer deze uit. Gebruik het hulpprogramma Azure IoT Explorer om de gegevens te bekijken die door het apparaat naar de hub worden verzonden.
+title: 'Zelfstudie: Node.js-voorbeeldcode voor een IoT Plug and Play-apparaat met meerdere onderdelen koppelen aan Azure IoT Hub | Microsoft Docs'
+description: 'Zelfstudie: Schrijf Node.js-voorbeeldcode voor een IoT Plug and Play-apparaat dat meerdere onderdelen gebruikt en verbinding maakt met een IoT-hub, en voer deze uit. Gebruik het hulpprogramma Azure IoT Explorer om de gegevens te bekijken die door het apparaat naar de hub worden verzonden.'
 author: olivakar
 ms.author: olkar
 ms.date: 07/10/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 2f0bf3b4b6e7091222b98e1743f0fb4f431fdd12
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: devx-track-js
+ms.openlocfilehash: 70fa10f5319de072ee8ea7dad4e73c58d4bdeede
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736057"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421415"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-nodejs"></a>Zelfstudie: Een voorbeeld van een IoT Plug and Play-apparaattoepassing met verschillende onderdelen verbinden met IoT Hub (Node.js)
 
@@ -47,7 +47,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 
 U gebruikt de SDK van het apparaat om de opgenomen voorbeeldcode te maken. De toepassing die u bouwt, simuleert een Plug en Play-apparaat met meerdere onderdelen dat verbinding maakt met een IoT-hub. De toepassing verzendt telemetrie en eigenschappen en ontvangt opdrachten.
 
-1. Ga in een lokaal terminalvenster naar de map van de gekloonde opslagplaats en ga naar de map */azure-iot-sdk-node/device/samples/pnp* . Voer vervolgens de volgende opdracht uit om de vereiste bibliotheken te installeren:
+1. Ga in een lokaal terminalvenster naar de map van de gekloonde opslagplaats en ga naar de map */azure-iot-sdk-node/device/samples/pnp*. Voer vervolgens de volgende opdracht uit om de vereiste bibliotheken te installeren:
 
 ```cmd/sh
 npm install
@@ -57,7 +57,7 @@ Hiermee installeert u de relevante NPM-bestanden die nodig zijn voor het uitvoer
 
 ## <a name="review-the-code"></a>De code bekijken
 
-Ga naar de map *azure-iot-sdk-node\device\samples\pnp* .
+Ga naar de map *azure-iot-sdk-node\device\samples\pnp*.
 
 De map *azure-iot-sdk-node\device\samples\pnp* bevat de voorbeeldcode voor het IoT Plug en Play-apparaat voor temperatuurregeling.
 

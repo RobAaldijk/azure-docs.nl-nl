@@ -6,12 +6,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3ae22294d86ab65be0f09b734735885177c1cf63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c4920eaa7a5619be37d38afd763e7be416d3124
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777306"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565718"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>Zelfstudie: Personalizer gebruiken in een .NET-chatbot
 
@@ -130,7 +130,7 @@ git clone https://github.com/Azure-Samples/cognitive-services-personalizer-sampl
 
 Als u deze chatbot wilt gebruiken, moet u Azure-resources maken voor Personalizer en LUIS (Language Understanding).
 
-* [LUIS-resources maken](../luis/luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal). Selecteer in de stap voor het maken **beide**, omdat u zowel creatie- als voorspellingsresources nodig hebt.
+* [LUIS-resources maken](../luis/luis-how-to-azure-subscription.md#create-luis-resources-in-the-azure-portal). Selecteer in de stap voor het maken **beide**, omdat u zowel creatie- als voorspellingsresources nodig hebt.
 * [Maak een Personalizer-resource](how-to-create-resource.md) en kopieer vervolgens de sleutel en het eindpunt in de Azure-portal. U moet deze waarden instellen in het `appsettings.json`-bestand van het .NET-project.
 
 ### <a name="create-luis-app"></a>Een LUIS-app maken
@@ -178,18 +178,18 @@ Zorg ervoor dat de website actief blijft, omdat in de zelfstudie wordt uitgelegd
 
 1. Open de Bot Framework Emulator en selecteer **Bot openen**.
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="Schermopname van de browser waarin de website van de chatbot wordt weergegeven.":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="Schermopname van het opstartscherm van de Bot Emulator.":::
 
 
 1. Configureer de bot met de volgende **bot-URL**. Selecteer vervolgens **Verbinding maken**:
 
     `http://localhost:3978/api/messages`
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="Schermopname van de browser waarin de website van de chatbot wordt weergegeven.":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="Schermopname van Bot openen in de Bot Emulator-instellingen.":::
 
     De emulator maakt verbinding met de chatbot en geeft de instructietekst weer, samen met informatie over logboekregistratie en foutopsporing die nuttig is voor lokale ontwikkeling.
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="Schermopname van de browser waarin de website van de chatbot wordt weergegeven.":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="Schermopname van de Bot Emulator bij de eerste wending in het gesprek.":::
 
 ## <a name="use-the-bot-in-the-bot-emulator"></a>De bot gebruiken in de Bot Emulator
 

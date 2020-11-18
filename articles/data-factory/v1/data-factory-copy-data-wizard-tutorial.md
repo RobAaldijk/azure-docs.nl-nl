@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d1b17a3e4556f6a963f3ecacd31472ce3f75b0fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93360e48dad13b9ec57175d31ecb61d32974f066
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85248544"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128399"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Zelfstudie: een pijplijn maken met de kopieeractiviteit middels de Data Factory-wizard Kopiëren
 > [!div class="op_single_selector"]
@@ -100,10 +100,10 @@ In deze stap gebruikt u Azure Portal om een Azure Data Factory met de naam **ADF
    1. Dubbelklik op **adftutorial** (map).
    2. Selecteer **emp.txt** en klik op **Kiezen**
       
-      ![Hulpprogramma voor kopiëren - Het invoerbestand of de invoermap kiezen](./media/data-factory-copy-data-wizard-tutorial/copy-tool-choose-input-file-or-folder.png)
+      ![Schermafbeelding met de optie Kiezen voor uw invoerbestand.](./media/data-factory-copy-data-wizard-tutorial/copy-tool-choose-input-file-or-folder.png)
 6. Klik op de pagina **Het invoerbestand of de invoermap kiezen** op **Volgende** Selecteer niet **Binaire kopie**. 
    
-    ![Hulpprogramma voor kopiëren - Het invoerbestand of de invoermap kiezen](./media/data-factory-copy-data-wizard-tutorial/chose-input-file-folder.png) 
+    ![Schermafbeelding met de optie Binaire kopie voor uw invoer.](./media/data-factory-copy-data-wizard-tutorial/chose-input-file-folder.png) 
 7. Op de pagina **Bestandsinstellingen** ziet u de scheidingstekens en het schema dat automatisch is gedetecteerd door de wizard tijdens het parseren van het bestand. U kunt de scheidingstekens ook handmatig invoeren zodat de wizard Kopiëren stopt met automatisch detecteren, of als u wilt dat gegevens worden overschreven. Klik op **Volgende** nadat u de scheidingstekens hebt gecontroleerd en een voorbeeld van de gegevens hebt bekeken. 
    
     ![Hulpprogramma voor kopiëren - Bestandsindelingsinstellingen](./media/data-factory-copy-data-wizard-tutorial/copy-tool-file-format-settings.png)  
@@ -128,10 +128,10 @@ In deze stap gebruikt u Azure Portal om een Azure Data Factory met de naam **ADF
     ![Hulpprogramma voor kopiëren - Schematoewijzing](./media/data-factory-copy-data-wizard-tutorial/schema-mapping-page.png)
 12. Op de pagina **Prestatie-instellingen** klikt u op **Volgende**. 
     
-    ![Hulpprogramma voor kopiëren - Prestatie-instellingen](./media/data-factory-copy-data-wizard-tutorial/performance-settings.png)
+    ![Schermafbeelding van de pagina Prestatie-instellingen, waar u Volgende kunt selecteren.](./media/data-factory-copy-data-wizard-tutorial/performance-settings.png)
 13. Lees de informatie op de pagina **Samenvatting** en klik op **Voltooien**. De wizard maakt twee gekoppelde services, twee gegevenssets (invoer en uitvoer) en één pijplijn in de gegevensfactory (van waaruit u de wizard Kopiëren hebt gestart). 
     
-    ![Hulpprogramma voor kopiëren - Prestatie-instellingen](./media/data-factory-copy-data-wizard-tutorial/summary-page.png)
+    ![Schermafbeelding van de pagina Samenvatting, waar u Volgende kunt selecteren.](./media/data-factory-copy-data-wizard-tutorial/summary-page.png)
 
 ## <a name="launch-monitor-and-manage-application"></a>Monitor starten en toepassing beheren
 1. Klik op de pagina **Implementatie** op de koppeling: `Click here to monitor copy pipeline`.

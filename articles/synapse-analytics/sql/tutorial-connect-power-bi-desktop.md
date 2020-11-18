@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: SQL on-demand verbinden met Power BI Desktop en rapport maken'
-description: In deze zelfstudie leert u hoe u SQL on-demand in Azure Synapse Analytics verbindt met Power BI-desktop en een demorapport maakt op basis van een weergave.
+title: 'Zelfstudie: Serverloze SQL-pools verbinden met Power BI Desktop en rapport maken'
+description: In deze zelfstudie leert u hoe u serverloze SQL-pools in Azure Synapse Analytics verbindt met Power BI-desktop en een demorapport maakt op basis van een weergave.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5c86825d6dce8681e114ec930add751b6beae085
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: dc2b068dd7c5e7fb3f9e3505f93245515d90ae23
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91539551"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317192"
 ---
-# <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>Zelfstudie: SQL on-demand gebruiken met Power BI Desktop en een rapport maken
+# <a name="tutorial-use-serverless-sql-pool-with-power-bi-desktop--create-a-report"></a>Zelfstudie: Serverloze SQL-pool gebruiken met Power BI Desktop en een rapport maken
 
 In deze zelfstudie leert u het volgende:
 
@@ -24,7 +24,7 @@ In deze zelfstudie leert u het volgende:
 >
 > - Demodatabase maken
 > - De weergave maken die wordt gebruikt voor het rapport
-> - Power BI Desktop verbinden met SQL on-demand
+> - Power BI Desktop verbinden met serverloze SQL-pool
 > - Rapport maken op basis van weergave
 
 ## <a name="prerequisites"></a>Vereisten
@@ -42,8 +42,8 @@ Waarden voor de volgende parameters:
 
 | Parameter                                 | Beschrijving                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| Adres van SQL on-demand service-eindpunt    | Gebruikt als servernaam                                   |
-| Regio van SQL on-demand service-eindpunt     | Wordt gebruikt om te bepalen welke opslag wordt gebruikt in de voorbeelden |
+| Eindpuntadres van de service voor serverloze SQL-pools    | Gebruikt als servernaam                                   |
+| Eindpuntregio van de service voor serverloze SQL-pools     | Wordt gebruikt om te bepalen welke opslag wordt gebruikt in de voorbeelden |
 | Gebruikersnaam en wachtwoord voor eindpunttoegang | Gebruikt voor toegang tot het eindpunt                               |
 | De database die u gaat gebruiken om weergaven te maken     | De database die wordt gebruikt als uitgangspunt in de voorbeelden       |
 
@@ -65,7 +65,7 @@ GO
 
 ## <a name="2---create-data-source"></a>2 - Gegevensbron maken
 
-Een gegevensbron is vereist voor de SQL on-demand-service om toegang te krijgen tot bestanden in de opslag. Maak de gegevensbron voor een opslagaccount dat zich in dezelfde regio als uw eindpunt bevindt. Hoewel SQL on-demand toegang kan krijgen tot opslagaccounts uit verschillende regio's, verkrijgt u betere prestaties als de opslag en het eindpunt zich in dezelfde regio bevinden.
+Een gegevensbron is vereist voor de serverloze SQL-pools om toegang te krijgen tot bestanden in de opslag. Maak de gegevensbron voor een opslagaccount dat zich in dezelfde regio als uw eindpunt bevindt. Hoewel serverloze SQL-pools toegang kunnen krijgen tot opslagaccounts uit verschillende regio's, verkrijgt u betere prestaties als de opslag en het eindpunt zich in dezelfde regio bevinden.
 
 Maak de gegevensbron door het volgende Transact-SQL-script (T-SQL) uit te voeren:
 

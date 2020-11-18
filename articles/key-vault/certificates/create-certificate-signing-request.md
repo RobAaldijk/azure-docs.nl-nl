@@ -10,18 +10,18 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: ad3dd64bb55ccd657b74bacff3e4441ce63f0cf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a85656909df5538f9f57e05d79ae768623d7eba6
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569370"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289605"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>CSR in Key Vault maken en samenvoegen
 
 Azure Key Vault ondersteunt het opslaan van digitaal certificaat dat is uitgegeven door een certificeringsinstantie van uw keuze in uw sleutelkluis. Het biedt ondersteuning voor het maken van de aanvraag voor certificaatondertekening met een persoonlijk-openbaar sleutelpaar en kan worden ondertekend door elke gekozen certificeringsinstantie. Dit kan een interne ondernemings-CA of een externe openbare CA zijn. Een aanvraag voor certificaatondertekening (ook CSR of certificerings aanvraag) is een bericht dat door de gebruiker naar een certificeringsinstantie (CA) wordt verzonden om de uitgifte van een digitaal certificaat aan te vragen.
 
-Zie [Azure Key Vault-certificaten](/azure/key-vault/certificates/about-certificates) voor meer algemene informatie over certificaten.
+Zie [Azure Key Vault-certificaten](./about-certificates.md) voor meer algemene informatie over certificaten.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -74,7 +74,7 @@ De volgende stappen helpen u bij het maken van een certificaat van certificering
     ![Certificaateigenschappen](../media/certificates/create-csr-merge-csr/create-certificate.png)
 6.  U ziet dat het certificaat nu is toegevoegd in de lijst Certificaten. Selecteer dit nieuwe certificaat dat u zojuist hebt gemaakt. De huidige status van het certificaat is uitgeschakeld omdat het nog niet is uitgegeven door de CA.
 7. Klik op tabblad **Certificaatbewerking** en selecteer **CSR downloaden**.
- ![Certificaateigenschappen](../media/certificates/create-csr-merge-csr/download-csr.png)
+ ![Schermafbeelding met de knop CSR downloaden gemarkeerd.](../media/certificates/create-csr-merge-csr/download-csr.png)
 
 8.  Breng het CSR-bestand naar de certificeringsinstantie om de aanvraag te kunnen ondertekenen.
 9.  Zodra de aanvraag is ondertekend door de CA, gaat u terug naar het certificaatbestand om en kiest u **De ondertekende aanvraag samenvoegen** in hetzelfde Certificaatbewerkingsscherm.

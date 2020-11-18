@@ -15,12 +15,12 @@ ms.date: 12/05/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
-ms.openlocfilehash: 07a0581cd7fe2e7a9c13f860c862e34da3cfd1ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f55b6eafe230f722979d535111ce45aa35981f0
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88998285"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125034"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-using-azure-notification-hubs"></a>Zelfstudie: Meldingen verzenden naar UWP-apps met behulp van Azure Notification Hubs
 
@@ -66,7 +66,7 @@ Als u pushmeldingen naar UWP-apps wilt verzenden, koppelt u uw app aan de Window
 3. Vouw **Productbeheer** uit, selecteer **WNS/MPNS** en vervolgens **Live Services-site**. Meld u aan bij uw Microsoft-account. De toepassingsregistratiepagina wordt in een nieuw tabblad geopend. U kunt ook rechtstreeks naar de pagina [Mijn toepassingen](https://apps.dev.microsoft.com) gaan en daar de naam van uw toepassing selecteren om deze pagina te openen.
 
     ![WNS MPNS-pagina](./media/notification-hubs-windows-store-dotnet-get-started/wns-mpns-page.png)
-4. Noteer het wachtwoord voor **Toepassingsgeheim** en de **beveiligings-id (SID) van uw pakket**.
+4. Noteer het wachtwoord voor **Toepassingsgeheimen** en zowel de **Beveiligings-id (SID) van het pakket** als de **Toepassings-id** onder de sectie Windows Store.
 
     >[!WARNING]
     >Het toepassingsgeheim en de pakket-SID zijn belangrijke beveiligingsreferenties. Deel deze waarden met niemand en distribueer ze niet met uw app.
@@ -149,7 +149,9 @@ De Notification Hub is nu geconfigureerd om met WNS te kunnen werken. U hebt de 
 
     Met deze actie wordt gegarandeerd dat de kanaal-URI in uw Notification Hub wordt geregistreerd telkens wanneer de toepassing wordt gestart.
 
-12. Als u de app wilt uitvoeren, drukt u de toets **F5** op het toetsenbord. Er wordt een dialoogvenster met de registratiesleutel weergegeven. Klik op **OK** om het dialoogvenster te sluiten.
+12. Klik met de rechtermuisknop op `Package.appxmanifest` en selecteer Code weergeven (**F7**). Zoek `<Identity .../>` en vervang de waarde door de **Toepassings-id** van de WNS die u [eerder](#create-an-app-in-windows-store) hebt aangemaakt.
+
+13. Als u de app wilt uitvoeren, drukt u de toets **F5** op het toetsenbord. Er wordt een dialoogvenster met de registratiesleutel weergegeven. Klik op **OK** om het dialoogvenster te sluiten.
 
     ![Registratie voltooid](./media/notification-hubs-windows-store-dotnet-get-started/registration-successful.png)
 

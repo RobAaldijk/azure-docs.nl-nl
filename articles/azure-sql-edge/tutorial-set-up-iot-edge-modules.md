@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sourabha, sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 7b2432fda70e8f9a5fa8bc64ede846d977672e9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75e6ebaea4c5ba883820d2309212b35fed128142
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886483"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422124"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>IoT Edge-modules en -verbindingen instellen
 
@@ -49,27 +49,30 @@ Geef nu de containerreferenties op in de IoT Edge-module.
    Gebruikersnaam|Gebruikersnaam
    Wachtwoord|Wachtwoord
   
-## <a name="deploy-the-data-generator-module"></a>De gegevensgeneratormodule implementeren
+## <a name="build-push-and-deploy-the-data-generator-module"></a>Bouw, push en implementeer de Gegevensgeneratormodule
 
-1. Klik in de sectie **IoT Edge** onder **Automatisch apparaatbeheer** op **Apparaat-id**. De id voor deze zelfstudie is `IronOrePredictionDevice`. Klik vervolgens op **Modules instellen**.
-
-2.  Klik in de sectie **IoT Edge-modules** op de pagina **Modules instellen op apparaat:** op **Toevoegen** en selecteer **IoT Edge-module**.
-
-3. Geef een geldige naam en een afbeeldings-URI op voor de IoT Edge-module.
-   De URI van de installatiekopie is te vinden in het containerregister in de resourcegroep die is gemaakt in deel één van deze zelfstudie. Selecteer de sectie **Opslagplaatsen** onder **Services**. Kies voor deze zelfstudie de opslagplaats `silicaprediction`. Selecteer de gewenste tag. De URI van de installatiekopie heeft de volgende indeling:
-
-   *aanmeldingsserver van het containerregister*/*opslagplaatsnaam*:*tagnaam*
-
-   Bijvoorbeeld:
-
+1. Kloon de [projectbestanden](https://github.com/microsoft/sqlsourabh/tree/main/SQLEdgeSamples/IoTEdgeSamples/IronOreSilica) naar uw computer.
+2. Open het bestand **IronOre_Silica_Predict.sln** met behulp van Visual Studio 2019
+3. Werk de details van het containerregister bij in **deployment.template.json** 
+   ```json
+   "registryCredentials":{
+        "RegistryName":{
+            "username":"",
+            "password":""
+            "address":""
+        }
+    }
    ```
-   ASEdemocontregistry.azurecr.io/silicaprediction:amd64
+4. Werk het bestand **modules.json** bij om het doelcontainerregister (of de opslagplaats voor de module) op te geven
+   ```json
+   "image":{
+        "repository":"samplerepo.azurecr.io/ironoresilicapercent",
+        "tag":
+    }
    ```
-
-4. Laat de velden *Beleid voor opnieuw opstarten* en *Gewenste status* voor wat ze zijn.
-
-5. Klik op **Add**.
-
+5. Voer het project uit in foutopsporings- of releasemodus om zeker te zijn dat het project zonder problemen wordt uitgevoerd. 
+6. Push het project naar uw containerregister door met de rechtermuisknop op de naam van het project te klikken en vervolgens **IoT Edge-modules bouwen en pushen** te selecteren.
+7. Implementeer de gegevensgeneratormodule als een IoT Edge-module op uw Edge-apparaat. 
 
 ## <a name="deploy-the-azure-sql-edge-module"></a>De Azure SQL Edge-module implementeren
 
@@ -77,7 +80,7 @@ Geef nu de containerreferenties op in de IoT Edge-module.
 
 2. Zoek op de blade **IoT Edge-module-Marketplace** naar *Azure SQL Edge* en kies *Azure SQL Edge-ontwikkelaar*. 
 
-3. Klik op de zojuist toegevoegde *Azure SQL Edge*-module onder **IoT Edge modules** om de Azure SQL Edge-module te configureren. Zie [Azure SQL Edge implementeren](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal) voor meer informatie over de configuratieopties.
+3. Klik op de zojuist toegevoegde *Azure SQL Edge*-module onder **IoT Edge modules** om de Azure SQL Edge-module te configureren. Zie [Azure SQL Edge implementeren](./deploy-portal.md) voor meer informatie over de configuratieopties.
 
 4. Voeg de `MSSQL_PACKAGE`omgevingsvariabele toe aan de implementatie van de *Azure SQL Edge*-module en geef de SAS-URL op van het dacpac-databasebestand dat is gemaakt in stap 8 van [Deel één](tutorial-deploy-azure-resources.md) van deze zelfstudie.
 
