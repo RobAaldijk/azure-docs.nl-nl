@@ -24,7 +24,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over de commerciële Ma
 
 De commerciële Marketplace verbindt zakelijke en overheids instanties met oplossingen die zijn gebouwd door onze partners. Onze partners maken en beheren aanbiedingen in partner centrum en klanten kunnen oplossingen ontdekken en kopen via productervaringen, zoals Microsoft AppSource, Azure Marketplace, wederverkopers in het Cloud Solution Provider-programma en onze verkoop teams via het programma voor gezamenlijk verkopen.
 
-Ga voor meer informatie naar de [hub van micro soft Commercial Marketplace](https://partner.microsoft.com/asset/collection/commercial-marketplace#/).
+Ga voor meer informatie naar de [hub van Microsoft Commercial Marketplace](https://partner.microsoft.com/asset/collection/commercial-marketplace#/).
 
 ### <a name="whats-the-difference-between-microsoft-appsource-and-azure-marketplace"></a>Wat is het verschil tussen Microsoft AppSource en Azure Marketplace?
 
@@ -36,17 +36,17 @@ Ga naar de [gids voor kopers](https://aka.ms/MarketplaceBuyerGuide)voor meer inf
 
 ### <a name="why-should-i-make-my-software-or-services-available-in-the-microsoft-commercial-marketplace"></a>Waarom moet ik mijn software of services beschikbaar maken in de micro soft Commercial Marketplace?
 
-De commerciële Marketplace is een uitgangs punt voor Go-to-Market-samen werking en activering met verkoop kanalen en Marketplace-beloningen. De websites en product ervaringen geven uw producten inzicht in miljoenen klanten die op zoek zijn naar oplossingen als die van u. U hoeft de handels mogelijkheden niet zelfs te bouwen of te kopen. 
+De commerciële Marketplace is een uitgangspunt voor Go-to-Market samenwerking en activering met verkoopkanalen en Marketplace-beloningen. De websites en product ervaringen geven uw producten inzicht in miljoenen klanten die op zoek zijn naar oplossingen als die van u. U hoeft de handelsmogelijkheden niet zelf te bouwen of te kopen. 
 
 De commerciële Marketplace is beschikbaar in 141 regio's, per abonnement. 
 
-We beheren de BTW-betaling in veel landen/regio's en bieden toegang tot ons wereld wijde kanaal netwerk van wederverkopers. U kunt de micro soft-klant overeenkomst van een klant of Enterprise Agreement gebruiken om te verkopen aan organisaties zonder dat u een nieuwe aanschaf relatie hoeft te maken.
+We beheren de BTW-betaling in veel landen/regio's en bieden toegang tot ons wereldwijde netwerk van wederverkopers. U kunt de Microsoft klantovereenkomst van een klant of Enterprise Agreement gebruiken om te verkopen aan organisaties zonder dat u een nieuw verkoopkanaal hoeft te maken.
 
 Zie de [micro soft Commercial Marketplace hub](https://aka.ms/commercialmarketplacehub)voor meer informatie.
 
-### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Zijn er kosten verbonden aan de micro soft Commercial Marketplace?
+### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Zijn er kosten verbonden aan de Microsoft Commercial Marketplace?
 
-Nee, er zijn geen kosten voor het publiceren van aanbiedingen in onze commerciële Marketplace. We houden een klein percentage van de verkoop op als transactie kosten en investeren ze in het Marketplace-programma voor markt beloning, platform innovatie en commerciële Marketplace-bewerkingen. Deze transactie kosten worden gereduceerd voor [Azure IP gemotiveerd-](./marketplace-co-sell.md) aanbiedingen en voor betaalde SaaS-aanbiedingen op AppSource die zijn gekoppeld aan een micro soft teams-app of ten minste twee Microsoft 365-invoeg toepassingen (Excel, Power Point, Word, Outlook en share point).
+Nee, er zijn geen kosten voor het publiceren van aanbiedingen in onze commerciële Marketplace. We houden een klein percentage van de verkoop in als transactie kosten en investeren ze in het Marketplace-programma voor markt beloning, platform innovatie en commerciële Marketplace-bewerkingen. Deze transactie kosten worden gereduceerd voor [Azure IP gemotiveerd-](./marketplace-co-sell.md) aanbiedingen en voor betaalde SaaS-aanbiedingen op AppSource die zijn gekoppeld aan een micro soft teams-app of ten minste twee Microsoft 365-invoeg toepassingen (Excel, Power Point, Word, Outlook en share point).
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>Hoe kan ik u zich aanmelden voor een uitgever in de micro soft Commercial Marketplace?
 
